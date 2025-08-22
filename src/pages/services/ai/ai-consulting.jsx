@@ -74,9 +74,11 @@ const HeroSection = () => {
 
         {/* Main Headline */}
         <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
-          <span className="text-blue-500">AI Advisory</span>
+         <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+          AI Advisory
+        </span>
           <br />
-          <span className="relative">Transform Your Enterprise <span className="text-blue-500 relative">with AI<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span></span>
+          <span className="relative">Transform Your Enterprise <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">with AI<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span></span>
         </h1>
 
         {/* Subtitle */}
@@ -86,25 +88,23 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Engage with Our AI Advisor
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
-          <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
-            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />See How AI Transforms Enterprises
-          </Button>
-        </div>
-      </div>
+         <Button
+          variant="glass"
+          size="xl"
+          className="group bg-black/10 font-sans"
+        >
+          <Play className="w-5 h-5 text-blue-500 group-hover:text-blue-600 transition-colors" />
+          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+            See How AI Transforms Enterprises
+          </span>
+        </Button>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <div className="text-xs text-gray-600 font-medium font-sans">Scroll to explore</div>
-          <div className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center relative overflow-hidden">
-            <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
-          </div>
         </div>
       </div>
     </section>
@@ -132,7 +132,7 @@ const AIServicesSection = () => {
             <span className="text-sm font-medium text-blue-500">Our AI Advisory Services</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            What Our <span className="text-blue-500">AI Advisory Services</span> Provide
+            What Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI Advisory Services</span> Provide
           </h2>
           <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Uncover the perks of engaging a reputable AI advisory firm that offers superior solutions to improve customer interactions and fulfill your enterprise objectives.
@@ -259,7 +259,7 @@ const CapabilitiesSection = () => {
             <span className="text-sm font-medium text-blue-500">Our Capabilities</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-            Infosource's AI <span className="text-blue-500">Advisory Capabilities</span>
+            Infosource's AI <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Advisory Capabilities</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
             Driving enterprise transformation with innovative AI advisory services
@@ -338,7 +338,7 @@ const TechnologiesSection = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            Advanced Tools Fueling Our <span className="text-blue-500">AI Advisory Services</span>
+            Advanced Tools Fueling Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI Advisory Services</span>
           </h2>
           <p
             className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
@@ -377,7 +377,7 @@ const TechnologiesSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="hero" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             Learn About Our Tech Strengths
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -416,7 +416,7 @@ const ProcessSection = () => {
             <span className="text-sm font-medium text-blue-500">Our Process</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Our Systematic Method for <span className="text-blue-500">AI Advisory</span>
+            Our Systematic Method for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI Advisory</span>
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             This is our way of crafting superior solutions for clients.
@@ -448,10 +448,15 @@ const ProcessSection = () => {
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">Overview of our accomplished initiatives worldwide</p>
           <p className="text-blue-100 mb-8 font-sans">We’ve aided clients globally in revamping their enterprise procedures.</p>
-          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 font-sans">
-            View Every Case Study
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+         <Button
+                variant="outline"
+                className="border-white hover:bg-white hover:text-blue-600 font-sans">
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  View Every Case Study
+                </span>
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+
         </div>
       </div>
     </section>
@@ -493,7 +498,7 @@ const WhyChooseSection = () => {
             <span className="text-sm font-medium text-blue-500">Why Choose Infosource</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Why Choose Infosource for <span className="text-blue-500">AI Advisory</span>
+            Why Choose Infosource for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI Advisory</span>
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             We stand as the premier provider of AI advisory services.
@@ -566,7 +571,7 @@ const TestimonialsSection = () => {
             <span className="text-sm font-medium text-blue-500">Testimonials</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Digitally Revamp Your Enterprise with <span className="text-blue-500">Infosource</span>
+            Digitally Revamp Your Enterprise with <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource</span>
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Feedback from our clients regarding our proficient abilities.
@@ -574,7 +579,7 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="hero" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             See Every Testimonial
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -605,13 +610,29 @@ const CTASection = () => {
         </div>
         
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="outline" size="xl" className="group border-white text-white hover:bg-white hover:text-blue-600 font-sans">
-            <MessageCircle className="w-5 h-5" />Contact Us Today
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button variant="outline" size="xl" className="group border-white/50 text-white hover:bg-white/10 font-sans">
-            <Calendar className="w-5 h-5" />Reserve a Session
-          </Button>
+        <Button
+          variant="outline"
+          size="xl"
+          className="group border-white hover:bg-white hover:text-blue-600 font-sans"
+        >
+          <MessageCircle className="w-5 h-5" />
+          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+            Contact Us Today
+          </span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </Button>
+
+        <Button
+          variant="outline"
+          size="xl"
+          className="group border-white/50 hover:bg-white/10 font-sans"
+        >
+          <Calendar className="w-5 h-5" />
+          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+            Reserve a Session
+          </span>
+        </Button>
+
         </div>
         
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

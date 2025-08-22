@@ -39,9 +39,9 @@ import JoinUs from "./pages/JoinUs";
 import ServicePage from "./pages/ServicePage";
 
 //partners pages
-import whypartner from "./pages/partners/whypartner";
-import partnerBenefits from "./pages/partners/partnerBenefits";
-import partnerOpportunity from "./pages/partners/partnerOpportunity";
+import WhyPartner from "./pages/partners/whypartner";
+import PartnerBenefits from "./pages/partners/partnerBenefits";
+import PartnerOpportunity from "./pages/partners/partnerOpportunity";
 
 //industry pages
 import Healthcare from "./pages/industry/healthcare";
@@ -106,9 +106,9 @@ const App = () => (
           <Route path="/join-us" element={<JoinUs />} />
 
           {/* partners pages */}
-          <Route path="/partner/why-partner-with-us" element={<whypartner />} />
-          <Route path="/partner/partner-benefits" element={<partnerBenefits />} />
-          <Route path="/partner/partner-opportunity" element={<partnerOpportunity />} />
+          <Route path="/partner/why-partner-with-us" element={<WhyPartner />} />
+          <Route path="/partner/partner-benefits" element={<PartnerBenefits />} />
+          <Route path="/partner/partner-opportunity" element={<PartnerOpportunity />} />
 
           {/* industry pages */}  
           <Route path="/industry/healthcare" element={<Healthcare />} />
