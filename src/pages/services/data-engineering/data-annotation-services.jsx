@@ -70,13 +70,14 @@ const HeroSection = () => {
           <span className="text-sm font-medium text-blue-500 font-sans">Data Annotation Services</span>
         </div>
         <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
-          Precision with <span className="text-blue-500 relative">Data Annotation<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span>
+          Precision with <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+Data Annotation<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span>
         </h1>
         <p className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`}>
           Change your data into practical knowledge with our careful AI Data Annotation offerings. Accuracy in each pixel, precision in each note.
         </p>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Set Up a Discussion
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -85,14 +86,6 @@ const HeroSection = () => {
           <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Data Annotation for Dominance
           </Button>
-        </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <div className="text-xs text-gray-600 font-medium font-sans">Scroll to explore</div>
-            <div className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center relative overflow-hidden">
-              <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -120,7 +113,8 @@ const ServicesSection = () => {
             <span className="text-sm font-medium text-blue-500 font-sans">Our Services</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Our <span className="text-blue-500">Data Annotation</span> Offerings
+            Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+Data Annotation</span> Offerings
           </h2>
           <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Transform your data into actionable insights with precise and reliable Data Annotation services.
@@ -194,7 +188,8 @@ const TechStackSection = () => {
             <span className="text-sm font-medium text-blue-500 font-sans">Tech Stack</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Empowering <span className="text-blue-500">Data Annotation</span> Tools
+            Empowering <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+Data Annotation</span> Tools
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Our sophisticated tech collection ensures excellent Data Annotation offerings.
@@ -222,7 +217,7 @@ const TechStackSection = () => {
           })}
         </div>
         <div className="text-center">
-          <Button variant="hero" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             Uncover Our Tech Resources
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -261,7 +256,8 @@ const ProcessSection = () => {
             <span className="text-sm font-medium text-blue-500 font-sans">Our Process</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Precise <span className="text-blue-500">Data Annotation</span> Process
+            Precise <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+Data Annotation</span> Process
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Your data, our skills, a fluid procedure for consistent and accurate Data Annotation.
@@ -295,7 +291,7 @@ const ProcessSection = () => {
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">Experience the Data Annotation variance</p>
           <p className="text-blue-100 mb-8 font-sans">Review our case studies to observe how our Data Annotation tools have affected diverse sectors.</p>
-          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 font-sans">
+          <Button variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans">
             View More Case Studies
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -341,7 +337,8 @@ const WhyChooseSection = () => {
             <span className="text-sm font-medium text-blue-500 font-sans">Why Infosource</span>
           </div>
           <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Why Choose <span className="text-blue-500">Infosource?</span>
+            Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+Infosource?</span>
           </h2>
           <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Uncover how Infosource pioneers in Data Annotation with unrivaled excellence and skills.
@@ -389,7 +386,7 @@ const WhyChooseSection = () => {
               );
             })}
           </div>
-          <Button variant="hero" size="lg" className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="mt-8 bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             Let's Change Your Data Together
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
@@ -443,7 +440,7 @@ const ImpactSection = () => {
                   </div>
                   <h3 className="font-semibold mb-2 text-white font-sans">{item.title}</h3>
                   <p className="text-sm text-white/80 font-sans">{item.description}</p>
-                  <Button variant="outline" size="lg" className="mt-4 border-white text-white hover:bg-white hover:text-blue-600 font-sans">
+                  <Button variant="outline" size="lg" className="mt-4 border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans">
                     {item.buttonText}
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
