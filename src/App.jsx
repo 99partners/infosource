@@ -54,7 +54,7 @@ import PartnerOpportunity from "./pages/partners/partnerOpportunity";
 import Healthcare from "./pages/industry/healthcare";
 import Fintech from "./pages/industry/fintech";
 import Logistics from "./pages/industry/logistics";
-// import Retail from "./pages/industry/retail";
+import Retail from "./pages/industry/retail";
 // import Ecommerce from "./pages/industry/ecommerce";
 // import Education from "./pages/industry/education";
 // import bfsiSolutions from "./pages/industry/bfsi-solutions";
@@ -131,8 +131,8 @@ const App = () => (
           <Route path="/industry/healthcare" element={<Healthcare />} />
           <Route path="/industry/fintech" element={<Fintech />} />
           <Route path="/industry/logistics" element={<Logistics />} />
-          {/* 
           <Route path="/industry/retail" element={<Retail />} />
+          {/* 
           <Route path="/industry/ecommerce" element={<Ecommerce />} />
           <Route path="/industry/education" element={<Education />} />
           <Route path="/industry/bfsi-solutions" element={<bfsisolutions />} />
