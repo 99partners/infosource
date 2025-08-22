@@ -129,7 +129,12 @@ const Navigation = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {servicesMenu.map((group) => (
                       <div key={group.title}>
-                        <div className="font-semibold mb-2 text-gray-900">{group.title}</div>
+                        <Link
+                          to={group.base}
+                          className="font-semibold mb-2 text-gray-900 hover:text-blue-500 transition-colors block"
+                        >
+                          {group.title}
+                        </Link>
                         <ul className="space-y-1">
                           {group.items.map((s) => (
                             <li key={s.slug}>
@@ -276,7 +281,13 @@ const Navigation = () => {
                 <div className="pl-4 py-2 space-y-3">
                   {servicesMenu.map((group) => (
                     <div key={group.title}>
-                      <div className="text-sm font-semibold mb-1 text-gray-900">{group.title}</div>
+                      <Link
+                        to={group.base}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="text-sm font-semibold mb-1 text-gray-900 hover:text-blue-500 transition-colors block"
+                      >
+                        {group.title}
+                      </Link>
                       <ul className="space-y-1">
                         {group.items.map((s) => (
                           <li key={s.slug}>
