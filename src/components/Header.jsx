@@ -76,6 +76,18 @@ const Navigation = () => {
     { label: 'SaaS Product', slug: 'saas-product' },
   ];
 
+  const partnerMenu = [
+    { label: 'Why Partner With Us', slug: 'why-partner-with-us' },
+    { label: 'Partner Benefits', slug: 'partner-benefits' },
+    { label: 'Partner Opportunity', slug: 'partner-opportunity' },
+  ];
+
+  const resourcesMenu = [
+    { label: 'Case Studies', slug: 'case-studies' },
+    { label: 'Testimonial', slug: 'testimonial' },
+    { label: 'About Us', slug: 'about-us' },
+  ];
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-6">
@@ -162,14 +174,30 @@ const Navigation = () => {
               </div>
             </div>
 
-            {/* About */}
-            <Link
-              to="/about"
-              className="text-gray-600 hover:text-gray-900 transition-colors relative group py-2"
-            >
-              About us
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 group-hover:w-full transition-all duration-300" />
-            </Link>
+            {/* Partner Submenu */}
+            <div className="relative group py-2">
+              <div className="flex items-center text-gray-600 hover:text-gray-900 transition-colors cursor-pointer relative">
+                Partner
+                <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 group-hover:w-full transition-all duration-300" />
+              </div>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 top-full mt-3 z-50">
+                <div className="bg-white p-6 rounded-2xl shadow-xl w-[320px] border border-gray-200">
+                  <ul className="grid gap-2">
+                    {partnerMenu.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          to={`/partner/${s.slug}`}
+                          className="text-sm text-gray-600 hover:text-gray-900 block py-1"
+                        >
+                          {s.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             {/* Blogs */}
             <Link
@@ -190,22 +218,16 @@ const Navigation = () => {
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 top-full mt-3 z-50">
                 <div className="bg-white p-6 rounded-2xl shadow-xl w-[320px] border border-gray-200">
                   <ul className="grid gap-2">
-                    <li>
-                      <Link
-                        to="/resources/case-studies"
-                        className="text-sm text-gray-600 hover:text-gray-900 block py-1"
-                      >
-                        Case Studies
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/resources/testimonial"
-                        className="text-sm text-gray-600 hover:text-gray-900 block py-1"
-                      >
-                        Testimonial
-                      </Link>
-                    </li>
+                    {resourcesMenu.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          to={`/resources/${s.slug}`}
+                          className="text-sm text-gray-600 hover:text-gray-900 block py-1"
+                        >
+                          {s.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -289,9 +311,23 @@ const Navigation = () => {
                   ))}
                 </div>
               </details>
-              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-gray-900">
-                About us
-              </Link>
+              <details>
+                <summary className="py-2 cursor-pointer text-gray-900 flex items-center gap-2">
+                  Partner <ChevronDown className="w-4 h-4" />
+                </summary>
+                <div className="pl-4 py-2 space-y-1">
+                  {partnerMenu.map((s) => (
+                    <Link
+                      key={s.slug}
+                      to={`/partner/${s.slug}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-gray-600 hover:text-gray-900 py-1 text-sm"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </details>
               <Link to="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-gray-900">
                 Blogs
               </Link>
@@ -300,27 +336,21 @@ const Navigation = () => {
                   Resources <ChevronDown className="w-4 h-4" />
                 </summary>
                 <div className="pl-4 py-2 space-y-1">
-                  <Link
-                    to="/resources/case-studies"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-gray-600 hover:text-gray-900 py-1 text-sm"
-                  >
-                    Case Studies
-                  </Link>
-                  <Link
-                    to="/resources/testimonial"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-gray-600 hover:text-gray-900 py-1 text-sm"
-                  >
-                    Testimonial
-                  </Link>
+                  {resourcesMenu.map((s) => (
+                    <Link
+                      key={s.slug}
+                      to={`/resources/${s.slug}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-gray-600 hover:text-gray-900 py-1 text-sm"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
                 </div>
               </details>
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-gray-900">
                 Contact us
               </Link>
-
-              {/* Mobile Join Us Button */}
               <Link to="/join-us" className="block mt-2">
                 <Button variant="hero" className="w-full bg-gradient-to-r from-blue-800 to-blue-500 text-white">
                   Join us

@@ -38,6 +38,11 @@ import ResourcesTestimonial from "./pages/ResourcesTestimonial";
 import JoinUs from "./pages/JoinUs";
 import ServicePage from "./pages/ServicePage";
 
+//partners pages
+import whypartner from "./pages/partners/whypartner";
+import partnerBenefits from "./pages/partners/partnerBenefits";
+import partnerOpportunity from "./pages/partners/partnerOpportunity";
+
 //industry pages
 import Healthcare from "./pages/industry/healthcare";
 import Fintech from "./pages/industry/fintech";
@@ -92,13 +97,18 @@ const App = () => (
           <Route path="/services/development-services/software-development" element={<SoftwareDevelopment />} />
           <Route path="/services/development-services/staff-augmentation" element={<StaffAugmentation />} />
           <Route path="/services/development-services/product-engineering" element={<ProductEngineering />} />
-          <Route path="/about" element={<About />} />
           <Route path="/industry" element={<Industry />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/resources/case-studies" element={<ResourcesCaseStudies />} />
           <Route path="/resources/testimonial" element={<ResourcesTestimonial />} />
+          <Route path="/resources/about-us" element={<About/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/join-us" element={<JoinUs />} />
+
+          {/* partners pages */}
+          <Route path="/partner/why-partner-with-us" element={<whypartner />} />
+          <Route path="/partner/partner-benefits" element={<partnerBenefits />} />
+          <Route path="/partner/partner-opportunity" element={<partnerOpportunity />} />
 
           {/* industry pages */}  
           <Route path="/industry/healthcare" element={<Healthcare />} />
