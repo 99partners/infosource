@@ -1,11 +1,11 @@
 import React from 'react'
 
-const dev_eng = () => {
+const DevEng = () => {
   return (
     <div>
-      
+      dev eng core services page
     </div>
   )
 }
 
-export default dev_eng
+export default DevEng

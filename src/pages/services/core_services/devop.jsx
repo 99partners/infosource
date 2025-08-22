@@ -1,11 +1,11 @@
 import React from 'react'
 
-const devop = () => {
+const DevOp = () => {
   return (
     <div>
-      
+      dev ops core services page
     </div>
   )
 }
 
-export default devop
+export default DevOp

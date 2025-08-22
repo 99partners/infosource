@@ -38,6 +38,13 @@ import ResourcesTestimonial from "./pages/ResourcesTestimonial";
 import JoinUs from "./pages/JoinUs";
 import ServicePage from "./pages/ServicePage";
 
+//core services pages
+import AI from "./pages/services/core_services/ai";
+import DataEng from "./pages/services/core_services/data_eng";
+import GenAI from "./pages/services/core_services/gen_ai";
+import DevEng from "./pages/services/core_services/dev_eng";
+import DevOp from "./pages/services/core_services/devop";
+
 //partners pages
 import WhyPartner from "./pages/partners/whypartner";
 import PartnerBenefits from "./pages/partners/partnerBenefits";
@@ -104,6 +111,16 @@ const App = () => (
           <Route path="/resources/about-us" element={<About/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/join-us" element={<JoinUs />} />
+
+          {/* core services pages */}
+          // ...existing code...
+{/* Core Services */}
+<Route path="/services/ai" element={<AI />} />
+<Route path="/services/data-engineering" element={<DataEng />} />
+<Route path="/services/generative-ai" element={<GenAI />} />
+<Route path="/services/development-services" element={<DevEng />} />
+<Route path="/services/devops" element={<DevOp />} />
+// ...existing code...
 
           {/* partners pages */}
           <Route path="/partner/why-partner-with-us" element={<WhyPartner />} />

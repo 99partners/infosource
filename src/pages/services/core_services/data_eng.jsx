@@ -1,11 +1,11 @@
 import React from 'react'
 
-const data_eng = () => {
+const DataEng = () => {
   return (
     <div>
-      
+      data eng core services page
     </div>
   )
 }
 
-export default data_eng
+export default DataEng

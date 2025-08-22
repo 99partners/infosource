@@ -1,11 +1,11 @@
 import React from 'react'
 
-const gen_ai = () => {
+const GenAI = () => {
   return (
     <div>
-      
+      gen ai core services page
     </div>
   )
 }
 
-export default gen_ai;
+export default GenAI;
