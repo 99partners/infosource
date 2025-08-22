@@ -814,14 +814,14 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-500">
-            <Button variant="accent" size="lg" className="group" asChild>
-              <a href="#contact">
+            <Button variant="accent" size="lg" className="border-blue-500/30 text-blue-500 bg-blue-100" asChild>
+              <a href="/contact">
                 Engage with an AI Expert
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-           <Button variant="outline" size="lg" className="border-blue-500/30 text-blue-500 bg-blue-100" asChild>
-            <a href="#services">Our Services</a>
+           <Button variant="accent" size="lg" className="border-blue-500/30 text-blue-500 bg-blue-100" asChild>
+            <a href="/services">Our Services</a>
           </Button>
           </div>
         </div>
@@ -918,8 +918,8 @@ const Services = () => {
                   ))}
                 </ul>
                 <div className="mt-auto">
-                  <Button variant="outline" className="w-full group" asChild>
-                    <a href="#contact" className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  <Button variant="outline" className="w-full group hover:text-blue-600" asChild>
+                    <a href="/contact" className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
                       Learn More
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform text-blue-800" />
                     </a>
@@ -947,7 +947,7 @@ const Services = () => {
             asChild
             className="bg-gradient-to-r from-blue-800 to-blue-400 text-white hover:opacity-90 transition-opacity"
           >
-            <a href="#contact">Consult Our AI Specialists</a>
+            <a href="/contact">Consult Our AI Specialists</a>
           </Button>
         </div>
       </div>
@@ -1201,7 +1201,7 @@ const Industries = () => {
             asChild
             className="bg-gradient-to-r from-blue-800 to-blue-400 text-white hover:opacity-90"
           >
-            <a href="#contact">
+            <a href="/contact">
               Book a Free AI Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
@@ -1291,7 +1291,7 @@ const WhyInfoSource = () => {
               Embracing the AI-Driven Future
             </h3>
             <div className="bg-gradient-card border border-border rounded-xl p-6 mb-8">
-              <h4 className="text-lg font-semibold text-foreground mb-3">A Message from Our CEO</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-3">A Message from Our Founder</h4>
               <p className="text-muted-foreground leading-relaxed">
                 "I am excited to affirm our steadfast dedication to revolutionizing your business and products with innovative AI technology. In today's fast-evolving and competitive landscape, leveraging AI to optimize and enhance your organization is not just an opportunity—it's a necessity."
               </p>
@@ -1305,7 +1305,7 @@ const WhyInfoSource = () => {
               asChild
               className="bg-gradient-to-r from-blue-800 to-blue-400 text-white hover:opacity-90"
             >
-              <a href="#contact">
+              <a href="/contact">
                 Create Your AI Roadmap
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
