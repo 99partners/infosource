@@ -63,70 +63,29 @@ const Contact = () => {
       <Navigation />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
+        <section className="relative min-h-[calc(100vh-14rem)] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-white/50"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
             <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
               <MessageCircle className="w-4 h-4 text-blue-500" />
               <span className="text-sm font-medium text-blue-500 font-sans">Get In Touch</span>
             </div>
-            <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-1000 delay-200 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`} data-index={0}>
-              Let's Build Something <span className="text-blue-500 relative">Amazing<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span> Together
+            <h1 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`} data-index={0}>
+              Let's Build Something <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Amazing<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span> Together
             </h1>
             <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 transition-all duration-1000 delay-400 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`} data-index={0}>
               Ready to transform your business with cutting-edge technology? We're here to help you succeed. Reach out today for a free consultation.
             </p>
             <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-              <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+              <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
                 <span className="relative z-10 flex items-center gap-3">
                   Start Partnership
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
+              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
                 Explore Our Services
               </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Info Section */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className={`text-center mb-12 transition-all duration-1000 ${visibleItems.includes(10) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={10}>
-              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <MessageCircle className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Contact Us</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black font-sans">
-                Reach Out <span className="text-blue-500">Anytime</span>
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <Card
-                    key={index}
-                    className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${visibleItems.includes(index + 11) ? 'animate-fade-in-up' : ''} animate-on-scroll`}
-                    data-index={index + 11}
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="font-semibold mb-2 text-black font-sans">{info.title}</h3>
-                      <p className="text-sm text-gray-600 mb-2 font-sans">{info.description}</p>
-                      <p className="font-medium text-blue-500 mb-3 font-sans">{info.details}</p>
-                      <Button variant="ghost" size="sm" className="hover:text-blue-600 font-sans">
-                        {info.action}
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                );
-              })}
             </div>
           </div>
         </section>
@@ -176,7 +135,7 @@ const Contact = () => {
                         <label htmlFor="message" className="block text-sm font-medium text-black mb-2 font-sans">Message *</label>
                         <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows={6} className="w-full font-sans" placeholder="Tell us about your project and how we can help..." />
                       </div>
-                      <Button type="submit" variant="hero" size="xl" className="w-full group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+                      <Button type="submit" variant="hero" size="xl" className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
                         <span className="relative z-10 flex items-center gap-3">
                           <Send className="w-5 h-5" /> Send Message
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -188,7 +147,7 @@ const Contact = () => {
               </Card>
               <div className={`space-y-8 transition-all duration-1000 ${visibleItems.includes(16) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={16}>
                 <div>
-                  <h2 className="text-3xl font-bold mb-6 text-black font-sans">Why Choose <span className="text-blue-500">Infosource?</span></h2>
+                  <h2 className="text-3xl font-bold mb-6 text-black font-sans">Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span></h2>
                   <div className="space-y-6">
                     {[
                       { icon: CheckCircle, title: "Free Consultation", description: "Get expert advice tailored to your specific business needs at no cost." },
@@ -228,41 +187,6 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-24 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className={`text-center mb-16 transition-all duration-1000 ${visibleItems.includes(20) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={20}>
-              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <MessageCircle className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">FAQs</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black font-sans">
-                Frequently Asked <span className="text-blue-500">Questions</span>
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed font-sans">Get quick answers to common questions about our services.</p>
-            </div>
-            <div className="space-y-6">
-              {[
-                { question: "How do you ensure project success?", answer: "We follow a proven methodology that includes thorough planning, regular communication, iterative development, and continuous testing to ensure your project meets all requirements and deadlines." },
-                { question: "What industries do you serve?", answer: "We work across multiple industries including healthcare, finance, retail, manufacturing, logistics, and education. Our diverse experience allows us to adapt our solutions to any sector." },
-                { question: "Do you provide ongoing support?", answer: "Yes, we offer comprehensive support and maintenance services to ensure your solutions continue to perform optimally. Our support includes 24/7 monitoring, regular updates, and technical assistance." },
-                { question: "How do you price your services?", answer: "Our pricing is based on project scope, complexity, and timeline. We offer both fixed-price projects and flexible retainer models. Contact us for a customized quote based on your specific needs." }
-              ].map((faq, index) => (
-                <Card
-                  key={index}
-                  className={`bg-black/5 p-6 rounded-xl transition-all duration-500 hover:scale-105 ${visibleItems.includes(index + 21) ? 'animate-fade-in-up' : ''} animate-on-scroll`}
-                  data-index={index + 21}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <CardContent>
-                    <h3 className="text-lg font-semibold mb-3 text-black font-sans">{faq.question}</h3>
-                    <p className="text-gray-600 leading-relaxed font-sans">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

@@ -63,11 +63,11 @@ const HeroSection = () => {
   useEffect(() => { setIsVisible(true); }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
+    <section className="relative min-h-[calc(100vh-14rem)] flex items-center justify-center overflow-hidden ">
       <div className="absolute inset-0 bg-white/70"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <br /><br /><br /><br /><br /><br />
+        <br /><br /><br />
         
         {/* Badge */}
         <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -76,14 +76,14 @@ const HeroSection = () => {
         </div>
 
         {/* Main Headline */}
-        <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
+        <h1 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Join the</span>
           <br />
           <span className="relative">Infosource Family <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Today<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span></span>
         </h1>
 
         {/* Subtitle */}
-        <p className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`}>
+        <p className={`text-xl md:text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`}>
           Are you passionate about technology and eager to make a difference? At Infosource, we build innovative software solutions that shape industries worldwide—and we’re looking for talented individuals to join our journey.
         </p>
 
@@ -113,15 +113,15 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Users className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500">Why Join Infosource</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Opportunities at <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">`Infosource</span>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Opportunities at <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource</span>
           </h2>
           <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Join a team that drives innovation and shapes the future of technology across industries.
@@ -158,7 +158,7 @@ const CTASection = () => {
   useEffect(() => { const t = setTimeout(() => setIsVisible(true), 200); return () => clearTimeout(t); }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -167,7 +167,7 @@ const CTASection = () => {
             <Users className="w-4 h-4 text-white" />
             <span className="text-sm font-medium text-white">Apply Now</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">Join Our <span className="text-blue-200">Innovative Team</span></h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white font-sans">Join Our <span className="text-blue-200">Innovative Team</span></h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
             Take the first step to join Infosource and contribute to groundbreaking software solutions.
           </p>
@@ -180,7 +180,7 @@ const CTASection = () => {
   }`}
 >
   <div className="bg-blue-50 backdrop-blur-sm border border-blue-200 rounded-xl p-8 max-w-2xl mx-auto shadow-lg">
-    <h3 className="text-2xl font-bold text-blue-800 mb-6 font-sans">
+    <h3 className="text-xl font-bold text-blue-800 mb-6 font-sans">
       Join Us Application Form
     </h3>
     <div className="grid gap-6">
@@ -255,7 +255,7 @@ const CTASection = () => {
       <Button
         variant="hero"
         size="lg"
-        className="bg-blue-600 hover:bg-blue-700 text-white font-sans shadow-md"
+        className="bg-gradient-to-r from-blue-800 to-blue-400 text-white font-sans shadow-md"
       >
         Submit Application
         <ArrowRight className="w-5 h-5 ml-2" />
