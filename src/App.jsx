@@ -55,12 +55,12 @@ import Healthcare from "./pages/industry/healthcare";
 import Fintech from "./pages/industry/fintech";
 import Logistics from "./pages/industry/logistics";
 import Retail from "./pages/industry/retail";
-// import Ecommerce from "./pages/industry/ecommerce";
-// import Education from "./pages/industry/education";
-// import bfsiSolutions from "./pages/industry/bfsi-solutions";
-// import sportsGaming from "./pages/industry/sports-gaming";
-// import energyUtility from "./pages/industry/energy-utility";
-// import realEstate from "./pages/industry/real-estate";
+import Ecommerce from "./pages/industry/ecommerce";
+import Education from "./pages/industry/education";
+import BFSI from "./pages/industry/bfsi-solutions";
+import SportsGaming from "./pages/industry/sports-gaming";
+import EnergyUtility from "./pages/industry/energy-utility";
+import RealEstate from "./pages/industry/real-estate";
 import MediaEntertainment from "./pages/industry/media-entertainment";
 import saasProduct from "./pages/industry/saas-product";
 
@@ -132,13 +132,13 @@ const App = () => (
           <Route path="/industry/fintech" element={<Fintech />} />
           <Route path="/industry/logistics" element={<Logistics />} />
           <Route path="/industry/retail" element={<Retail />} />
-          {/* 
           <Route path="/industry/ecommerce" element={<Ecommerce />} />
-          <Route path="/industry/education" element={<Education />} />
-          <Route path="/industry/bfsi-solutions" element={<bfsisolutions />} />
-          <Route path="/industry/sports-gaming" element={<sportsGaming />} />
-          <Route path="/industry/energy-utility" element={<energyUtility />} />
-          <Route path="/industry/real-estate" element={<realEstate />} /> */}
+          <Route path="/industry/education" element={<Education />} />          
+          <Route path="/industry/bfsi-solution" element={<BFSI />} />
+          <Route path="/industry/sports-gaming" element={<SportsGaming />} />
+          
+          <Route path="/industry/energy-utility" element={<EnergyUtility />} />
+          <Route path="/industry/real-estate" element={<RealEstate />} />
           <Route path="/industry/media-entertainment" element={<MediaEntertainment />} />
           <Route path="/industry/saas-product" element={<SaaSProduct />} /> 
 
