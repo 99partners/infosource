@@ -206,7 +206,7 @@ const PartnerBenefits = () => {
 
         {/* Benefits List */}
         <section className="py-12 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl text-center mx-auto px-6">
             <div
               className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
                 visibleItems.includes(1) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

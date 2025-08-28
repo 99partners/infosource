@@ -3,7 +3,8 @@ import Navigation from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Users, ArrowRight, Heart, Zap, Award, Target, CheckCircle, Clock, Star, Settings, TrendingUp, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, ArrowRight, Heart, Zap, Award, Target, CheckCircle, Clock, Star, Settings, TrendingUp, Shield, MessageCircle } from 'lucide-react';
 
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -25,14 +26,17 @@ const About = () => {
   const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.getAttribute('data-index') || '0');
-          setVisibleItems((prev) => [...new Set([...prev, index])]);
-        }
-      });
-    }, { threshold: 0.2 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
     const items = document.querySelectorAll('.animate-on-scroll');
     items.forEach((item) => observer.observe(item));
@@ -44,43 +48,87 @@ const About = () => {
       <Navigation />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
+        <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-white/50"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
-            <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} data-index={0}>
-              <Users className="w-4 h-4 text-blue-500" />
+          <div
+            className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0"
+            data-index={0}
+          >
+            <div
+              className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={0}
+            >
+              <MessageCircle className="w-4 h-4 text-blue-500" />
               <span className="text-sm font-medium text-blue-500 font-sans">About Infosource</span>
             </div>
-            <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`} data-index={0}>
-              Pioneering <span className="text-blue-500 relative">Digital Excellence<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span>
+            <h1
+              className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } text-black font-sans animate-on-scroll`}
+              data-index={0}
+            >
+              Pioneering{" "}
+              <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                Digital Excellence
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
+              </span>
             </h1>
-            <p className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`} data-index={0}>
+            <p
+              className={`text-lg text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } font-sans animate-on-scroll`}
+              data-index={0}
+            >
               Infosource has been a trusted technology partner, delivering innovative software development, IT consulting, and digital transformation services. We empower businesses worldwide to scale smarter, innovate faster, and achieve measurable growth through cutting-edge solutions.
             </p>
-            <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-              <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
-                <span className="relative z-10 flex items-center gap-3">
-                  <Users className="w-5 h-5" />Start Partnership
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+            <div
+              className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
+                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={0}
+            >
+              <Button
+                asChild
+                variant="hero"
+                size="xl"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
+              >
+                <Link to="/contact">
+                  <span className="relative z-10 flex items-center gap-3">
+                    <Users className="w-5 h-5" />Start Partnership
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
-                Explore Our Services
+              <Button
+                asChild
+                variant="glass"
+                size="xl"
+                className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
+              >
+                <Link to="/services">Explore Our Services</Link>
               </Button>
             </div>
           </div>
         </section>
 
         {/* Mission Section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div data-index={10} className={`animate-on-scroll transition-all duration-1000 ${visibleItems.includes(10) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              data-index={1}
+              className={`animate-on-scroll transition-all duration-1000 ${
+                visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <Heart className="w-4 h-4 text-blue-500" />
+                <MessageCircle className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Our Mission</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Our <span className="text-blue-500">Mission</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Mission</span>
               </h2>
               <Card className="p-8 rounded-2xl max-w-3xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
                 <CardContent>
@@ -94,15 +142,20 @@ const About = () => {
         </section>
 
         {/* Vision Section */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div data-index={11} className={`animate-on-scroll transition-all duration-1000 ${visibleItems.includes(11) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              data-index={2}
+              className={`animate-on-scroll transition-all duration-1000 ${
+                visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <Zap className="w-4 h-4 text-blue-500" />
+                <MessageCircle className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Our Vision</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Our <span className="text-blue-500">Vision</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Vision</span>
               </h2>
               <Card className="p-8 rounded-2xl max-w-3xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
                 <CardContent>
@@ -116,15 +169,20 @@ const About = () => {
         </section>
 
         {/* What We Do Section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div data-index={12} className={`animate-on-scroll transition-all duration-1000 ${visibleItems.includes(12) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              data-index={3}
+              className={`animate-on-scroll transition-all duration-1000 ${
+                visibleItems.includes(3) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <Target className="w-4 h-4 text-blue-500" />
+                <MessageCircle className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">What We Do</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                What <span className="text-blue-500">We Do</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                What <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">We Do</span>
               </h2>
               <Card className="p-8 rounded-2xl max-w-4xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
                 <CardContent>
@@ -157,15 +215,20 @@ const About = () => {
         </section>
 
         {/* Why Choose Section */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <div data-index={13} className={`animate-on-scroll transition-all duration-1000 ${visibleItems.includes(13) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div
+              data-index={4}
+              className={`animate-on-scroll transition-all duration-1000 ${
+                visibleItems.includes(4) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
-                <Award className="w-4 h-4 text-blue-500" />
+                <MessageCircle className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Why Choose Infosource</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Why Choose <span className="text-blue-500">Infosource?</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 {[
@@ -177,7 +240,11 @@ const About = () => {
                 ].map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${visibleItems.includes(13 + index) ? 'animate-fade-in-up' : ''}`} data-index={13 + index} style={{ animationDelay: `${index * 0.2}s` }}>
+                    <Card
+                      key={index}
+                      className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 animate-on-scroll`}
+                      data-index={4 + index}
+                    >
                       <CardHeader>
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
@@ -198,33 +265,59 @@ const About = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-          <div className="absolute inset-0 bg-white/50"></div>
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
-            <div className={`transition-all duration-1000 ${visibleItems.includes(24) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={24}>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-                <Heart className="w-4 h-4 text-blue-500" />
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <div
+              className={`transition-all duration-1000 ${
+                visibleItems.includes(9) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={9}
+            >
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
+                <MessageCircle className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Partner With Us</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Ready to <span className="text-blue-500">Transform</span> Your Business?
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Ready to <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Transform</span> Your Business?
               </h2>
-              <p className="text-xl text-black/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
                 Partner with Infosource to unlock innovative technology solutions that drive growth, streamline operations, and deliver measurable results.
               </p>
             </div>
-            <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${visibleItems.includes(24) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={24}>
-              <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
-                <span className="relative z-10 flex items-center gap-3">
-                  <Users className="w-5 h-5" />Start Partnership
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+            <div
+              className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${
+                visibleItems.includes(9) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={9}
+            >
+              <Button
+                asChild
+                variant="hero"
+                size="xl"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
+              >
+                <Link to="/contact">
+                  <span className="relative z-10 flex items-center gap-3">
+                    <Users className="w-5 h-5" />Start Partnership
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
-                Request a Consultation
+              <Button
+                asChild
+                variant="glass"
+                size="xl"
+                className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
+              >
+                <Link to="/consultation">Request a Consultation</Link>
               </Button>
             </div>
-            <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${visibleItems.includes(24) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={24}>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
+                visibleItems.includes(9) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={9}
+            >
               <Card className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
                 <CardContent>
                   <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
