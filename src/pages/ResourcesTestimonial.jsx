@@ -33,7 +33,7 @@ const ResourcesTestimonial = () => {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-white/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
           <div
             className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0"
             data-index={0}

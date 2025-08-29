@@ -64,7 +64,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-[calc(100vh-14rem)] flex items-center justify-center overflow-hidden ">
-      <div className="absolute inset-0 bg-white/70"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <br /><br /><br />

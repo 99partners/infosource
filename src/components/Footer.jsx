@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden border-t border-white/10">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-2">
