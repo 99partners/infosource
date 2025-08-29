@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
+import ScrollToTop from "./components/ScrollToTop";
 // static service pages
 import AIConsulting from "./pages/services/ai/ai-consulting";
 import RAG from "./pages/services/ai/rag-data-to-llms";
@@ -73,6 +74,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
@@ -113,14 +115,12 @@ const App = () => (
           <Route path="/join-us" element={<JoinUs />} />
 
           {/* core services pages */}
-          // ...existing code...
-{/* Core Services */}
+          {/* Core Services */}
 <Route path="/services/ai" element={<AI />} />
 <Route path="/services/data-engineering" element={<DataEng />} />
 <Route path="/services/generative-ai" element={<GenAI />} />
 <Route path="/services/development-services" element={<DevEng />} />
 <Route path="/services/devops" element={<DevOp />} />
-// ...existing code...
 
           {/* partners pages */}
           <Route path="/partner/why-partner-with-us" element={<WhyPartner />} />
