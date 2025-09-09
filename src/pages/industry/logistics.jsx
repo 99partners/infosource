@@ -54,52 +54,30 @@ const HeroSection = () => {
   useEffect(() => { setIsVisible(true); }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <br /><br /><br /><br /><br /><br />
-        
-        {/* Badge */}
-        <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Truck className="w-5 h-5 text-blue-500" />
-          <span className="text-sm font-medium text-blue-500">Logistics AI Solutions</span>
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
+        <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
+          <Truck className="w-4 h-4 text-blue-500" />
+          <span className="text-sm font-medium text-blue-500 font-sans">Logistics AI Solutions</span>
         </div>
-
-        {/* Main Headline */}
-        <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
-          <span className="text-blue-500">Logistics</span>
-          <br />
-          <span className="relative">AI-Powered Supply Chain <span className="text-blue-500 relative">Solutions<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span></span>
+        <h1 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans animate-on-scroll`} data-index={0}>
+          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI-Powered Supply Chain Solutions</span>
+          <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
         </h1>
-
-        {/* Subtitle */}
-        <p className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`}>
-          Revolutionize your logistics operations with cutting-edge AI technology. Experience tailor-made AI 
-          solutions designed to optimize and simplify your logistics workflows.
+        <p className={`text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans animate-on-scroll`} data-index={0}>
+          Revolutionize your logistics operations with cutting-edge AI technology. Experience tailor-made AI solutions designed to optimize and simplify your logistics workflows.
         </p>
-
-        {/* CTA Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Connect With Our Team
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
-          <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
+          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />See How AI is Transforming Logistics
           </Button>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <div className="text-xs text-gray-600 font-medium font-sans">Scroll to explore</div>
-          <div className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center relative overflow-hidden">
-            <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
-          </div>
         </div>
       </div>
     </section>
@@ -119,27 +97,21 @@ const AIForLogisticsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
             <Brain className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">AI for Smarter Logistics</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">AI for Smarter Logistics</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Next-Gen AI <span className="text-blue-500">Solutions for Logistics</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            AI for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Smarter Logistics</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Artificial intelligence has fundamentally transformed logistics and supply chain management. The 
-            days of unreliable legacy systems causing delays and complexities are over. Real-time automation 
-            now drives efficiency and accuracy. At Infosource, we recognize the crucial role AI plays in modern 
-            logistics. Our expert team is dedicated to delivering powerful AI-driven solutions that streamline 
-            supply chain operations and boost productivity using the latest technologies.
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            Artificial intelligence has fundamentally transformed logistics and supply chain management. The days of unreliable legacy systems causing delays and complexities are over. Real-time automation now drives efficiency and accuracy. At Infosource, we recognize the crucial role AI plays in modern logistics. Our expert team is dedicated to delivering powerful AI-driven solutions that streamline supply chain operations and boost productivity using the latest technologies.
           </p>
         </div>
-
-        {/* Key Points */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={3}>
           {[
             { icon: Users, text: "Enhances customer satisfaction with reliable service." },
             { icon: Leaf, text: "Supports sustainable and eco-friendly logistics practices." },
@@ -148,7 +120,7 @@ const AIForLogisticsSection = () => {
           ].map((point, index) => {
             const Icon = point.icon;
             return (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5">
+              <Card key={index} className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={4 + index}>
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                     <Icon className="w-6 h-6 text-white" />
@@ -186,33 +158,29 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <BarChart3 className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white">Industry Stats</span>
+    <section ref={sectionRef} className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
+            <BarChart3 className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">Key Industry Stats</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Key Logistics Market Insights
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            Key <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Industry Stats</span>
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <Card key={index} className={`bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={3 + index}>
                 <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/20 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2 font-sans">{stat.value}</div>
-                  <p className="text-white/80 text-sm mb-3 leading-relaxed font-sans">{stat.label}</p>
-                  <div className="text-white/60 text-xs font-semibold">– {stat.source}</div>
+                  <div className="text-3xl font-bold text-black mb-2 font-sans">{stat.value}</div>
+                  <p className="text-gray-600 text-sm mb-3 leading-relaxed font-sans">{stat.label}</p>
+                  <div className="text-gray-600 text-xs font-semibold font-sans">– {stat.source}</div>
                 </CardContent>
               </Card>
             );
@@ -253,29 +221,28 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
             <Zap className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Our Services</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Our Capabilities</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-            Infosource's AI <span className="text-blue-500">Logistics Services</span>
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Infosource's AI <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Logistics Capabilities</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sans">
             We craft intelligent AI solutions designed to maximize efficiency across your logistics operations.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isVisible = visibleItems.includes(index);
             return (
-              <Card key={index} data-index={index} className={`service-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''} bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} data-index={index} className={`service-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{service.title}</CardTitle>
@@ -322,29 +289,28 @@ const ApplicationsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
             <Target className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">AI Applications</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Logistics Sectors</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-            AI Applications in <span className="text-blue-500">Logistics</span>
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            AI Applications in <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Logistics</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sans">
             Key areas where our AI solutions enhance logistics performance.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {applications.map((application, index) => {
             const Icon = application.icon;
             const isVisible = visibleItems.includes(index);
             return (
-              <Card key={index} data-index={index} className={`application-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''} bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} data-index={index} className={`application-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{application.title}</CardTitle>
@@ -386,28 +352,27 @@ const TechnologiesSection = () => {
 
   const technologies = [
     { icon: "👁️", title: "Computer Vision", color: "from-blue-500 to-blue-700" },
-    { icon: "🔥", title: "PyTorch", color: "from-red-500 to-red-700" },
-    { icon: "🤖", title: "Robotic Process Automation", color: "from-green-500 to-green-700" },
-    { icon: "📡", title: "Internet of Things (IoT)", color: "from-purple-500 to-purple-700" },
-    { icon: "🗣️", title: "Natural Language Processing", color: "from-indigo-500 to-indigo-700" }
+    { icon: "🔥", title: "PyTorch", color: "from-blue-500 to-blue-700" },
+    { icon: "🤖", title: "Robotic Process Automation", color: "from-blue-500 to-blue-700" },
+    { icon: "📡", title: "Internet of Things (IoT)", color: "from-blue-500 to-blue-700" },
+    { icon: "🗣️", title: "Natural Language Processing", color: "from-blue-500 to-blue-700" }
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             <Zap className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Technologies</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Technologies</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Technologies Powering <span className="text-blue-500">AI in Logistics</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+            Technologies Powering <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI in Logistics</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             We employ best-in-class technologies to redefine your logistics capabilities.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {technologies.map((tech, index) => {
             const isItemVisible = visibleItems.includes(index);
@@ -415,24 +380,23 @@ const TechnologiesSection = () => {
               <Card
                 key={index}
                 data-index={index}
-                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isItemVisible ? 'animate-fade-in-up' : ''} bg-white`}
+                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isItemVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center">
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <div className={`w-12 h-12 mx-auto mb-6 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     <span className="text-3xl">{tech.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{tech.title}</h3>
+                  <h3 className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{tech.title}</h3>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
         <div className="text-center">
-          <Button variant="hero" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             Transform Logistics with AI
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -469,43 +433,41 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             <Award className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Why Choose Infosource</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Why Choose Infosource</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Why Partner with Infosource for <span className="text-blue-500">AI in Logistics</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+            Why Partner with Infosource for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI in Logistics</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             Our secure, forward-thinking development approach differentiates us.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
+              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold text-black font-sans">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">{feature.description}</CardDescription>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{feature.description}</CardDescription>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-8 font-sans">Our Track Record</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {achievements.map((achievement, index) => {
@@ -513,7 +475,7 @@ const WhyChooseSection = () => {
               return (
                 <div key={index} className="text-center">
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -534,53 +496,59 @@ const CTASection = () => {
   useEffect(() => { const t = setTimeout(() => setIsVisible(true), 200); return () => clearTimeout(t); }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Truck className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white">Partner With Us</span>
+    <section className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
+            <Truck className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">Partner With Us</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">Ready to <span className="text-blue-200">Elevate</span> Your Logistics?</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Ready to <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Elevate</span> Your Logistics?
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
             Connect with our specialists to unlock powerful AI technologies that enhance logistics operations and drive efficiency.
           </p>
         </div>
-        
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="outline" size="xl" className="group border-white text-white hover:bg-white hover:text-blue-600 font-sans">
-            <MessageCircle className="w-5 h-5" />Connect With Our Team
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <span className="relative z-10 flex items-center gap-3">
+              <MessageCircle className="w-5 h-5" />Connect With Our Team
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </Button>
-          <Button variant="outline" size="xl" className="group border-white/50 text-white hover:bg-white/10 font-sans">
+          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Calendar className="w-5 h-5" />Schedule Consultation
           </Button>
         </div>
-        
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <MessageCircle className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Get In Touch</h3>
-            <p className="text-sm text-white/80 font-sans">Start a conversation about your logistics AI project</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <Calendar className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Free Consultation</h3>
-            <p className="text-sm text-white/80 font-sans">Discover AI opportunities for your logistics operations</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <Clock className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Fast Response</h3>
-            <p className="text-sm text-white/80 font-sans">We'll get back to you within 24 hours</p>
-          </div>
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Get In Touch</h3>
+              <p className="text-sm text-gray-600 font-sans">Start a conversation about your logistics AI project</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Free Consultation</h3>
+              <p className="text-sm text-gray-600 font-sans">Discover AI opportunities for your logistics operations</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Fast Response</h3>
+              <p className="text-sm text-gray-600 font-sans">We'll get back to you within 24 hours</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
@@ -588,6 +556,23 @@ const CTASection = () => {
 };
 
 const Logistics = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { 
+        if (entry.isIntersecting) { 
+          const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
+          setVisibleItems((prev) => [...prev, index]); 
+        } 
+      });
+    }, { threshold: 0.2 });
+    
+    const items = document.querySelectorAll('.animate-on-scroll');
+    items?.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />

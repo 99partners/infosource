@@ -118,7 +118,7 @@ const Navigation = () => {
             </Link>
 
             {/* Services Mega Menu */}
-            <div className="group py-2">
+            <div className="relative group py-2">
               <div className="flex items-center text-gray-600 hover:text-gray-900 transition-colors cursor-pointer relative">
                 Services
                 <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />

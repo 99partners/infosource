@@ -37,9 +37,10 @@ import {
   Clock,
   AlertTriangle,
   Search,
-  CloudIcon as Cloud
+  Cloud
 } from 'lucide-react';
 
+// AnimatedCounter component
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -56,65 +57,43 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   return <span>{count}{suffix}</span>;
 };
 
+// HeroSection component (aligned with Blogs page theme)
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => { setIsVisible(true); }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <br /><br /><br /><br /><br /><br />
-        
-        {/* Badge */}
-        <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Heart className="w-5 h-5 text-blue-500" />
-          <span className="text-sm font-medium text-blue-500">Healthcare AI Solutions</span>
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
+        <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
+          <Heart className="w-4 h-4 text-blue-500" />
+          <span className="text-sm font-medium text-blue-500 font-sans">Healthcare AI Solutions</span>
         </div>
-
-        {/* Main Headline */}
-        <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans`}>
-          <span className="text-blue-500">Healthcare</span>
-          <br />
-          <span className="relative">AI-Powered Healthcare <span className="text-blue-500 relative">Solutions<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span></span>
+        <h1 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-black font-sans animate-on-scroll`} data-index={0}>
+          <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI-Powered Healthcare</span>
+          <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
         </h1>
-
-        {/* Subtitle */}
-        <p className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans`}>
-          Artificial Intelligence is reshaping the healthcare landscape—enabling quicker diagnostics, tailored 
-          treatment plans, and predictive patient care. At Infosource, we empower the industry with smart AI 
-          innovations that elevate clinical results, improve operational workflows, and deliver actionable, 
-          data-centric insights.
+        <p className={`text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} font-sans animate-on-scroll`} data-index={0}>
+          Artificial Intelligence is reshaping the healthcare landscape—enabling quicker diagnostics, tailored treatment plans, and predictive patient care. At Infosource, we empower the industry with smart AI innovations that elevate clinical results, improve operational workflows, and deliver actionable, data-centric insights.
         </p>
-
-        {/* CTA Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Let's Connect
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
-          <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
+          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />See How AI is Elevating Healthcare
           </Button>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <div className="text-xs text-gray-600 font-medium font-sans">Scroll to explore</div>
-          <div className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center relative overflow-hidden">
-            <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
+// AIForHealthcareSection component (aligned with Blogs page theme)
 const AIForHealthcareSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -128,27 +107,21 @@ const AIForHealthcareSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
             <Brain className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">AI for Smarter Healthcare</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">AI for Smarter Healthcare</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            AI for <span className="text-blue-500">Smarter Healthcare</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            AI for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Smarter Healthcare</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            AI technology is driving transformation in healthcare—enhancing patient care, boosting 
-            administrative efficiency, and revolutionizing diagnostics through tools like machine learning and 
-            predictive modeling. Infosource develops intelligent AI-driven applications that optimize healthcare 
-            delivery, simplify medical procedures, and personalize the patient journey. Focused on data accuracy 
-            and targeted treatment, we are leaders in AI-powered healthcare transformation.
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            AI technology is driving transformation in healthcare—enhancing patient care, boosting administrative efficiency, and revolutionizing diagnostics through tools like machine learning and predictive modeling.
           </p>
         </div>
-
-        {/* Key Points */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={3}>
           {[
             { icon: TrendingUp, text: "AI integration is accelerating across the healthcare ecosystem." },
             { icon: BarChart3, text: "Projected revenues reflect increased investments and innovation." },
@@ -157,7 +130,7 @@ const AIForHealthcareSection = () => {
           ].map((point, index) => {
             const Icon = point.icon;
             return (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5">
+              <Card key={index} className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={4 + index}>
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                     <Icon className="w-6 h-6 text-white" />
@@ -173,6 +146,7 @@ const AIForHealthcareSection = () => {
   );
 };
 
+// StatsSection component (aligned with Blogs page theme)
 const StatsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -195,33 +169,29 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <BarChart3 className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white">Key Industry Stats</span>
+    <section ref={sectionRef} className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
+            <BarChart3 className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">Key Industry Stats</span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Key Industry Stats
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+            Key <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Industry Stats</span>
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <Card key={index} className={`bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={3 + index}>
                 <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/20 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2 font-sans">{stat.value}</div>
-                  <p className="text-white/80 text-sm mb-3 leading-relaxed font-sans">{stat.label}</p>
-                  <div className="text-white/60 text-xs font-semibold">– {stat.source}</div>
+                  <div className="text-3xl font-bold text-black mb-2 font-sans">{stat.value}</div>
+                  <p className="text-gray-600 text-sm mb-3 leading-relaxed font-sans">{stat.label}</p>
+                  <div className="text-gray-600 text-xs font-semibold font-sans">– {stat.source}</div>
                 </CardContent>
               </Card>
             );
@@ -232,6 +202,7 @@ const StatsSection = () => {
   );
 };
 
+// CapabilitiesSection component (from original code, styled to match Blogs page)
 const CapabilitiesSection = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const sectionRef = useRef(null);
@@ -262,29 +233,28 @@ const CapabilitiesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
             <Zap className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Our Capabilities</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Our Capabilities</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-            Infosource's AI <span className="text-blue-500">Healthcare Capabilities</span>
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Infosource's AI <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Healthcare Capabilities</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sans">
             Driving the future of healthcare with innovative and intelligent AI technologies
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {capabilities.map((capability, index) => {
             const Icon = capability.icon;
             const isVisible = visibleItems.includes(index);
             return (
-              <Card key={index} data-index={index} className={`capability-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''} bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} data-index={index} className={`capability-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{capability.title}</CardTitle>
@@ -301,6 +271,7 @@ const CapabilitiesSection = () => {
   );
 };
 
+// PredictiveAnalyticsSection component (aligned with Blogs page theme)
 const PredictiveAnalyticsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -314,39 +285,37 @@ const PredictiveAnalyticsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
               <LineChart className="w-4 h-4 text-blue-500" />
-              <span className="text-sm font-medium text-blue-500">Predictive Analytics</span>
+              <span className="text-sm font-medium text-blue-500 font-sans">Predictive Analytics</span>
             </div>
-            <h2 className="text-4xl font-bold text-black mb-6 font-sans">Predictive Analytics</h2>
+            <h2 className="text-3xl font-bold text-black mb-6 font-sans">Predictive Analytics</h2>
             <p className="text-lg text-gray-600 leading-relaxed font-sans">
-              Our predictive models analyze past healthcare data to forecast disease trends, outcomes, and 
-              resource needs. By leveraging these insights, we help healthcare providers proactively manage 
-              patient care and optimize planning and resource distribution.
+              Our predictive models analyze past healthcare data to forecast disease trends, outcomes, and resource needs. By leveraging these insights, we help healthcare providers proactively manage patient care and optimize planning and resource distribution.
             </p>
           </div>
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-black/5 rounded-xl p-8 shadow-xl">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2"><AnimatedCounter end={95} suffix="%" /></div>
-                  <div className="text-sm text-blue-100">Prediction Accuracy</div>
+                  <div className="text-3xl font-bold text-black mb-2"><AnimatedCounter end={95} suffix="%" /></div>
+                  <div className="text-sm text-gray-600 font-sans">Prediction Accuracy</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2"><AnimatedCounter end={40} suffix="%" /></div>
-                  <div className="text-sm text-blue-100">Cost Reduction</div>
+                  <div className="text-3xl font-bold text-black mb-2"><AnimatedCounter end={40} suffix="%" /></div>
+                  <div className="text-sm text-gray-600 font-sans">Cost Reduction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2"><AnimatedCounter end={60} suffix="%" /></div>
-                  <div className="text-sm text-blue-100">Faster Diagnosis</div>
+                  <div className="text-3xl font-bold text-black mb-2"><AnimatedCounter end={60} suffix="%" /></div>
+                  <div className="text-sm text-gray-600 font-sans">Faster Diagnosis</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2"><AnimatedCounter end={85} suffix="%" /></div>
-                  <div className="text-sm text-blue-100">Patient Satisfaction</div>
+                  <div className="text-3xl font-bold text-black mb-2"><AnimatedCounter end={85} suffix="%" /></div>
+                  <div className="text-sm text-gray-600 font-sans">Patient Satisfaction</div>
                 </div>
               </div>
             </div>
@@ -357,6 +326,7 @@ const PredictiveAnalyticsSection = () => {
   );
 };
 
+// SolutionsSection component (aligned with Blogs page theme)
 const SolutionsSection = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const sectionRef = useRef(null);
@@ -387,30 +357,28 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
             <Target className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Healthcare Sectors</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Healthcare Sectors</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-            AI Solutions for Every <span className="text-blue-500">Healthcare Sector</span>
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            AI Solutions for Every <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Healthcare Sector</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
-            From improving health outcomes to streamlining operations, our AI offerings serve the distinct 
-            needs of various medical domains.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sans">
+            From improving health outcomes to streamlining operations, our AI offerings serve the distinct needs of various medical domains.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             const isVisible = visibleItems.includes(index);
             return (
-              <Card key={index} data-index={index} className={`solution-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'animate-fade-in-up' : ''} bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} data-index={index} className={`solution-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{solution.title}</CardTitle>
@@ -427,6 +395,7 @@ const SolutionsSection = () => {
   );
 };
 
+// TechnologiesSection component (aligned with Blogs page theme)
 const TechnologiesSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState([]);
@@ -452,41 +421,28 @@ const TechnologiesSection = () => {
 
   const technologies = [
     { icon: "🤖", title: "Machine Learning", color: "from-blue-500 to-blue-700" },
-    { icon: "🗣️", title: "Natural Language Processing (NLP)", color: "from-green-500 to-green-700" },
-    { icon: "👁️", title: "Computer Vision", color: "from-purple-500 to-purple-700" },
-    { icon: "🧠", title: "Deep Learning", color: "from-red-500 to-red-700" },
-    { icon: "🤖", title: "Robotics", color: "from-indigo-500 to-indigo-700" },
-    { icon: "☁️", title: "Cloud Integration", color: "from-cyan-500 to-cyan-700" },
+    { icon: "🗣️", title: "Natural Language Processing (NLP)", color: "from-blue-500 to-blue-700" },
+    { icon: "👁️", title: "Computer Vision", color: "from-blue-500 to-blue-700" },
+    { icon: "🧠", title: "Deep Learning", color: "from-blue-500 to-blue-700" },
+    { icon: "🤖", title: "Robotics", color: "from-blue-500 to-blue-700" },
+    { icon: "☁️", title: "Cloud Integration", color: "from-blue-500 to-blue-700" },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             <Zap className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Technologies</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Technologies</span>
           </div>
-          <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            Technologies Powering <span className="text-blue-500">AI in Healthcare</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+            Technologies Powering <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI in Healthcare</span>
           </h2>
-          <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             Explore the intelligent technologies redefining modern healthcare delivery.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {technologies.map((tech, index) => {
             const isItemVisible = visibleItems.includes(index);
@@ -494,30 +450,23 @@ const TechnologiesSection = () => {
               <Card
                 key={index}
                 data-index={index}
-                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${
-                  isItemVisible ? 'animate-fade-in-up' : ''
-                } bg-white`}
+                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isItemVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center">
-                  <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                  >
+                  <div className={`w-12 h-12 mx-auto mb-6 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                     <span className="text-3xl">{tech.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
-                    {tech.title}
-                  </h3>
+                  <h3 className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{tech.title}</h3>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
         <div className="text-center">
-          <Button variant="hero" size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-sans">
+          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             Revolutionize Care with Smart AI Systems
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -525,6 +474,7 @@ const TechnologiesSection = () => {
   );
 };
 
+// ProcessSection component (aligned with Blogs page theme)
 const ProcessSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -545,49 +495,47 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             <Settings className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Our Process</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Our Process</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            How Infosource Builds <span className="text-blue-500">AI Healthcare Projects</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+            How Infosource Builds <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI Healthcare Projects</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             We deliver strategic, customized AI healthcare solutions to meet evolving industry demands.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {processes.map((process, index) => {
             const Icon = process.icon;
             return (
-              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
+              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">{process.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold text-black font-sans">{process.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">{process.description}</CardDescription>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{process.description}</CardDescription>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
-        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">Our Impactful AI Projects in Action</p>
           <p className="text-blue-100 mb-8 font-sans">See how Infosource has delivered cutting-edge AI solutions that create measurable results and lasting change.</p>
-          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 font-sans">
+          <Button variant="glass" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans">
             Explore Our Portfolio
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -595,6 +543,7 @@ const ProcessSection = () => {
   );
 };
 
+// WhyChooseSection component (aligned with Blogs page theme)
 const WhyChooseSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -622,43 +571,41 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             <Award className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Why Choose Infosource</span>
+            <span className="text-sm font-medium text-blue-500 font-sans">Why Choose Infosource</span>
           </div>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Why Choose Infosource for <span className="text-blue-500">AI in Healthcare</span>
+          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+            Why Choose Infosource for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">AI in Healthcare</span>
           </h2>
-          <p className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
             Your Strategic Partner for Intelligent Healthcare Transformation
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${isVisible ? 'animate-fade-in-up' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
+              <Card key={index} className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} style={{ animationDelay: `${index * 0.2}s` }}>
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold text-black font-sans">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">{feature.description}</CardDescription>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{feature.description}</CardDescription>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-8 font-sans">Our Track Record</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {achievements.map((achievement, index) => {
@@ -666,7 +613,7 @@ const WhyChooseSection = () => {
               return (
                 <div key={index} className="text-center">
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -682,65 +629,72 @@ const WhyChooseSection = () => {
   );
 };
 
+// CTASection component (aligned with Blogs page theme)
 const CTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setIsVisible(true), 200); return () => clearTimeout(t); }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white">Partner With Us</span>
+    <section className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
+            <Heart className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">Partner With Us</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">Ready to <span className="text-blue-200">Transform</span> Healthcare?</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            The healthcare industry is evolving rapidly with AI innovations. Partner with Infosource to unlock 
-            powerful AI technologies that improve patient outcomes and operational efficiency.
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Ready to <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Transform</span> Healthcare?
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+            The healthcare industry is evolving rapidly with AI innovations. Partner with Infosource to unlock powerful AI technologies that improve patient outcomes and operational efficiency.
           </p>
         </div>
-        
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Button variant="outline" size="xl" className="group border-white text-white hover:bg-white hover:text-blue-600 font-sans">
-            <MessageCircle className="w-5 h-5" />Contact Us Today
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <span className="relative z-10 flex items-center gap-3">
+              <MessageCircle className="w-5 h-5" />Contact Us Today
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </Button>
-          <Button variant="outline" size="xl" className="group border-white/50 text-white hover:bg-white/10 font-sans">
+          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Calendar className="w-5 h-5" />Schedule Consultation
           </Button>
         </div>
-        
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <MessageCircle className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Get In Touch</h3>
-            <p className="text-sm text-white/80 font-sans">Start a conversation about your healthcare AI project</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <Calendar className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Free Consultation</h3>
-            <p className="text-sm text-white/80 font-sans">Discover AI opportunities for your healthcare organization</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-            <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-              <Clock className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="font-semibold mb-2 text-white font-sans">Fast Response</h3>
-            <p className="text-sm text-white/80 font-sans">We'll get back to you within 24 hours</p>
-          </div>
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Get In Touch</h3>
+              <p className="text-sm text-gray-600 font-sans">Start a conversation about your healthcare AI project</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Free Consultation</h3>
+              <p className="text-sm text-gray-600 font-sans">Discover AI opportunities for your healthcare organization</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <CardContent>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold mb-2 text-black font-sans">Fast Response</h3>
+              <p className="text-sm text-gray-600 font-sans">We'll get back to you within 24 hours</p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
   );
 };
 
+// Healthcare component (includes all sections)
 const Healthcare = () => {
   const [visibleItems, setVisibleItems] = useState([]);
 
@@ -754,7 +708,7 @@ const Healthcare = () => {
       });
     }, { threshold: 0.2 });
     
-    const items = document.querySelectorAll('.tech-card');
+    const items = document.querySelectorAll('.animate-on-scroll');
     items?.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Header';
@@ -49,8 +48,8 @@ const SportsGaming = () => {
       <Navigation />
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-          <div className="absolute inset-0 bg-white/50"></div>
+        <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
             <div
               className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
@@ -62,15 +61,16 @@ const SportsGaming = () => {
               <span className="text-sm font-medium text-blue-500 font-sans">Sports & Gaming Solutions</span>
             </div>
             <h1
-              className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+              className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
                 visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               } text-black font-sans animate-on-scroll`}
               data-index={0}
             >
-              Elevate <span className="text-blue-500 relative">Sports & Gaming<div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div></span>
+              Elevate <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Sports & Gaming</span>
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
             </h1>
             <p
-              className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+              className={`text-lg text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
                 visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               } font-sans animate-on-scroll`}
               data-index={0}
@@ -83,7 +83,7 @@ const SportsGaming = () => {
               } animate-on-scroll`}
               data-index={0}
             >
-              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
                 <Link to="/connect-us">
                   <span className="relative z-10 flex items-center gap-3">
                     <Users className="w-5 h-5" />Request a Quote
@@ -91,7 +91,7 @@ const SportsGaming = () => {
                   </span>
                 </Link>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
+              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
                 Explore Sports Solutions
               </Button>
             </div>
@@ -99,7 +99,7 @@ const SportsGaming = () => {
         </section>
 
         {/* Sports & Gaming Solutions Section */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
@@ -111,8 +111,8 @@ const SportsGaming = () => {
                 <Zap className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Our Solutions</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Custom <span className="text-blue-500">Sports & Gaming Solutions</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Custom <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Sports & Gaming Solutions</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-sans">
                 As a top-tier sports app development company, Infosource delivers high-performance game and fantasy sports solutions tailored for fans, athletes, and businesses.
@@ -130,22 +130,22 @@ const SportsGaming = () => {
                   return (
                     <Card
                       key={index}
-                      className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${
-                        visibleItems.includes(2 + index) ? 'animate-fade-in-up' : ''
+                      className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 rounded-xl ${
+                        visibleItems.includes(2 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       } animate-on-scroll`}
                       data-index={2 + index}
                       style={{ animationDelay: `${index * 0.2}s` }}
                     >
                       <CardHeader>
                         <div className="flex items-center gap-4">
-                          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                            <Icon className="w-8 h-8 text-white" />
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                            <Icon className="w-6 h-6 text-white" />
                           </div>
-                          <CardTitle className="text-xl font-bold text-black font-sans">{item.title}</CardTitle>
+                          <CardTitle className="text-lg font-bold text-black font-sans">{item.title}</CardTitle>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="text-gray-600 leading-relaxed font-sans">{item.description}</CardDescription>
+                        <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{item.description}</CardDescription>
                       </CardContent>
                     </Card>
                   );
@@ -156,7 +156,7 @@ const SportsGaming = () => {
         </section>
 
         {/* Featured Projects Section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
@@ -168,8 +168,8 @@ const SportsGaming = () => {
                 <Star className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Featured Projects</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Driving <span className="text-blue-500">Innovation in Sports</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Driving <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Innovation in Sports</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -179,17 +179,17 @@ const SportsGaming = () => {
                 ].map((project, index) => (
                   <Card
                     key={index}
-                    className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
-                      visibleItems.includes(9 + index) ? 'animate-fade-in-up' : ''
+                    className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 rounded-xl ${
+                      visibleItems.includes(9 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     } animate-on-scroll`}
                     data-index={9 + index}
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardHeader>
-                      <CardTitle className="text-xl font-bold text-black font-sans">{project.title}</CardTitle>
+                      <CardTitle className="text-lg font-bold text-black font-sans">{project.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-gray-600 leading-relaxed font-sans">{project.description}</CardDescription>
+                      <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{project.description}</CardDescription>
                     </CardContent>
                   </Card>
                 ))}
@@ -199,7 +199,7 @@ const SportsGaming = () => {
         </section>
 
         {/* Technology Stack Section */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
@@ -211,10 +211,10 @@ const SportsGaming = () => {
                 <Gamepad2 className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Technology Stack</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Technologies <span className="text-blue-500">Powering Sports Apps</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Technologies <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Powering Sports Apps</span>
               </h2>
-              <Card className="p-8 rounded-2xl max-w-4xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
+              <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {[
@@ -243,7 +243,7 @@ const SportsGaming = () => {
         </section>
 
         {/* Why Choose Infosource Section */}
-        <section className="py-24 bg-white">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
@@ -255,8 +255,8 @@ const SportsGaming = () => {
                 <Target className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Why Infosource</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Why Choose <span className="text-blue-500">Infosource?</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {[
@@ -268,22 +268,22 @@ const SportsGaming = () => {
                 ].map((stat, index) => (
                   <Card
                     key={index}
-                    className={`hover:shadow-lg transition-all duration-500 bg-black/5 ${
-                      visibleItems.includes(18 + index) ? 'animate-fade-in-up' : ''
+                    className={`hover:shadow-lg transition-all duration-500 bg-black/5 rounded-xl ${
+                      visibleItems.includes(18 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     } animate-on-scroll`}
                     data-index={18 + index}
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardContent className="pt-6">
-                      <div className="text-4xl font-bold text-blue-500 mb-2">
+                      <div className="text-3xl font-bold text-black mb-2 font-sans">
                         <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                       </div>
-                      <p className="text-lg text-gray-600 font-sans">{stat.description}</p>
+                      <p className="text-sm text-gray-600 font-sans">{stat.description}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
-              <Card className="p-8 rounded-2xl max-w-4xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
+              <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
                   <p className="text-lg text-gray-600 leading-relaxed font-sans">
                     Enterprise-grade sports and gaming software built by industry experts to drive innovation and engagement.
@@ -291,7 +291,7 @@ const SportsGaming = () => {
                 </CardContent>
               </Card>
               <div className="mt-8">
-                <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+                <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
                   <Link to="/connect-us">
                     <span className="relative z-10 flex items-center gap-3">
                       <Users className="w-5 h-5" />Contact Us Today
@@ -305,7 +305,7 @@ const SportsGaming = () => {
         </section>
 
         {/* Industries Served Section */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
@@ -317,10 +317,10 @@ const SportsGaming = () => {
                 <Target className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Industries We Serve</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Beyond <span className="text-blue-500">Sports & Gaming</span>
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Beyond <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Sports & Gaming</span>
               </h2>
-              <Card className="p-8 rounded-2xl max-w-4xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 bg-black/5">
+              <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {[
@@ -353,23 +353,22 @@ const SportsGaming = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-          <div className="absolute inset-0 bg-white/50"></div>
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`transition-all duration-1000 ${
                 visibleItems.includes(29) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               } animate-on-scroll`}
               data-index={29}
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
                 <Heart className="w-4 h-4 text-blue-500" />
                 <span className="text-sm font-medium text-blue-500 font-sans">Transform Sports & Gaming</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black font-sans">
-                Build Your <span className="text-blue-500">Sports App</span> with Infosource
+              <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+                Build Your <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Sports App</span> with Infosource
               </h2>
-              <p className="text-xl text-black/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
                 Partner with Infosource to create innovative sports and gaming solutions that engage fans and empower athletes.
               </p>
             </div>
@@ -379,7 +378,7 @@ const SportsGaming = () => {
               } animate-on-scroll`}
               data-index={29}
             >
-              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-sans">
+              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
                 <Link to="/connect-us">
                   <span className="relative z-10 flex items-center gap-3">
                     <Users className="w-5 h-5" />Get in Touch
@@ -387,7 +386,7 @@ const SportsGaming = () => {
                   </span>
                 </Link>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans">
+              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
                 View Sports Portfolio
               </Button>
             </div>
@@ -397,31 +396,31 @@ const SportsGaming = () => {
               } animate-on-scroll`}
               data-index={29}
             >
-              <Card className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+              <Card className="bg-black/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-6 h-6 text-black" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-semibold mb-2 text-black font-sans">Start a Conversation</h3>
-                  <p className="text-sm text-black/80 font-sans">Discuss your sports app project with our experts.</p>
+                  <p className="text-sm text-gray-600 font-sans">Discuss your sports app project with our experts.</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+              <Card className="bg-black/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-6 h-6 text-black" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-semibold mb-2 text-black font-sans">Free Consultation</h3>
-                  <p className="text-sm text-black/80 font-sans">Explore opportunities for your sports solution.</p>
+                  <p className="text-sm text-gray-600 font-sans">Explore opportunities for your sports solution.</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
+              <Card className="bg-black/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-6 h-6 text-black" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="font-semibold mb-2 text-black font-sans">Fast Response</h3>
-                  <p className="text-sm text-black/80 font-sans">We’ll get back to you within 24 hours.</p>
+                  <p className="text-sm text-gray-600 font-sans">We’ll get back to you within 24 hours.</p>
                 </CardContent>
               </Card>
             </div>
