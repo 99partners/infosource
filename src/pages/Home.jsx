@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Navigation from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +28,26 @@ import teamConsulting from "@/assets/team-consulting.jpg";
 import Footer from "@/components/Footer";
 
 const Hero = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll('.animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="home"
@@ -50,7 +71,12 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-8 animate-slide-up">
+          <div 
+            className={`inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-sm text-primary-foreground">
               Cutting-Edge AI Solutions
@@ -58,19 +84,34 @@ const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-slide-up delay-150">
+          <h1 
+            className={`text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 transition-all duration-1000 delay-200 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Transform Your Organization & Data for the AI Era
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-primary-foreground/80 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up delay-300">
+          <p 
+            className={`text-xl md:text-2xl text-primary-foreground/80 mb-12 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Cutting-Edge AI Solutions for Future-Ready Enterprises. Infosource
             delivers comprehensive AI services powered by the latest technological
             advancements.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-500">
+          <div 
+            className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-600 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             <Button variant="accent" size="lg" className="border-blue-500/30 text-blue-500 bg-blue-100" asChild>
               <a href="/contact">
                 Engage with an AI Expert
@@ -88,6 +129,26 @@ const Hero = () => {
 };
 
 const Services = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll('#services .animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
       icon: "🧠",
@@ -136,17 +197,32 @@ const Services = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+          <div 
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+              visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={1}
+          >
             <Zap className="h-4 w-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500">Our Services</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 
+            className={`text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-1000 delay-200 ${
+              visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={1}
+          >
             Revolutionizing Operations with{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
               Advanced AI Solutions
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p 
+            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-400 ${
+              visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={1}
+          >
             Navigate the technology-driven landscape and achieve long-term growth with our tailored AI solutions.
           </p>
         </div>
@@ -156,7 +232,10 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group hover:shadow-strong transition-all duration-300 hover:scale-105 border-border bg-gradient-card w-full max-w-xs flex flex-col"
+              className={`group hover:shadow-strong transition-all duration-500 hover:scale-105 border-border bg-gradient-card w-full max-w-xs flex flex-col ${
+                visibleItems.includes(2 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } animate-on-scroll`}
+              data-index={2 + index}
             >
               <CardHeader className="flex flex-col items-center text-center">
                 <span className="text-4xl mb-4">{service.icon}</span>
@@ -193,7 +272,12 @@ const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-card border border-border rounded-2xl p-8 shadow-soft">
+        <div 
+          className={`text-center bg-gradient-card border border-border rounded-2xl p-8 shadow-soft transition-all duration-1000 delay-500 ${
+            visibleItems.includes(7) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          } animate-on-scroll`}
+          data-index={7}
+        >
           <div className="flex items-center justify-center gap-2 mb-4">
             <BarChart3 className="h-6 w-6 text-accent" />
             <span className="text-lg font-semibold text-foreground">
@@ -218,6 +302,26 @@ const Services = () => {
 };
 
 const Stats = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll('#stats .animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   const stats = [
     {
       icon: TrendingUp,
@@ -246,7 +350,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
+    <section id="stats" className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float delay-500"></div>
@@ -254,17 +358,37 @@ const Stats = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-6">
+          <div 
+            className={`inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             <TrendingUp className="h-4 w-4 text-accent" />
             <span className="text-sm font-medium text-primary-foreground">Market Intelligence</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+          <h2 
+            className={`text-4xl md:text-5xl font-bold text-primary-foreground mb-6 transition-all duration-1000 delay-200 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Evolving AI and Data Strategies
           </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8">
+          <p 
+            className={`text-xl text-primary-foreground/80 mb-8 transition-all duration-1000 delay-400 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Are You Keeping Up?
           </p>
-          <p className="text-lg text-primary-foreground/70 max-w-3xl mx-auto">
+          <p 
+            className={`text-lg text-primary-foreground/70 max-w-3xl mx-auto transition-all duration-1000 delay-500 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Our experts share insights on AI's transformative impact across global industries.
           </p>
         </div>
@@ -276,7 +400,10 @@ const Stats = () => {
             return (
               <div
                 key={index}
-                className="text-center group hover:scale-105 transition-all duration-300"
+                className={`text-center group hover:scale-105 transition-all duration-500 ${
+                  visibleItems.includes(1 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } animate-on-scroll`}
+                data-index={1 + index}
               >
                 <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-lg shadow-gray-500/30 hover:bg-white/15 transition-all duration-300">
                   <div className="flex justify-center mb-4">
@@ -300,7 +427,12 @@ const Stats = () => {
         </div>
 
         {/* Additional Stats */}
-        <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center shadow-lg shadow-gray-500/30">
+        <div 
+          className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 text-center shadow-lg shadow-gray-500/30 transition-all duration-1000 delay-500 ${
+            visibleItems.includes(5) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          } animate-on-scroll`}
+          data-index={5}
+        >
           <h3 className="text-2xl font-bold text-primary-foreground mb-6">Additional Market Insights</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -323,6 +455,26 @@ const Stats = () => {
 };
 
 const Industries = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll('#industries .animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   const industries = [
     {
       icon: "🏥",
@@ -403,17 +555,32 @@ const Industries = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+          <div 
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             <Target className="h-4 w-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500">Industries</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 
+            className={`text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-1000 delay-200 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Tailored AI Solutions for{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
               Your Industry
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p 
+            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-400 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Our team of industry specialists crafts innovative solutions that align with your unique requirements.
           </p>
         </div>
@@ -425,7 +592,10 @@ const Industries = () => {
             return (
               <Card
                 key={index}
-                className="group hover:shadow-medium transition-all duration-300 hover:scale-105 border-border bg-card"
+                className={`group hover:shadow-medium transition-all duration-500 hover:scale-105 border-border bg-card ${
+                  visibleItems.includes(1 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } animate-on-scroll`}
+                data-index={1 + index}
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-center gap-3">
@@ -450,7 +620,12 @@ const Industries = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-card border border-border rounded-2xl p-8 shadow-soft">
+        <div 
+          className={`text-center bg-gradient-card border border-border rounded-2xl p-8 shadow-soft transition-all duration-1000 delay-500 ${
+            visibleItems.includes(13) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          } animate-on-scroll`}
+          data-index={13}
+        >
           <h3 className="text-2xl font-bold text-foreground mb-4">
             Ready to Transform Your Industry?
           </h3>
@@ -475,6 +650,26 @@ const Industries = () => {
 };
 
 const WhyInfoSource = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll('#why-infosource .animate-on-scroll');
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   const features = [
     {
       icon: Shield,
@@ -506,21 +701,36 @@ const WhyInfoSource = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section id="why-infosource" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+          <div 
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             <Award className="h-4 w-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500">Why InfoSource?</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 
+            className={`text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-1000 delay-200 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             A Globally Trusted{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
               AI Development Partner
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p 
+            className={`text-xl text-muted-foreground max-w-3xl mx-auto transition-all duration-1000 delay-400 ${
+              visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={0}
+          >
             Collaborate with InfoSource's skilled professionals to turn your ideas into impactful AI solutions.
           </p>
         </div>
@@ -528,7 +738,12 @@ const WhyInfoSource = () => {
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
           {/* Image Side */}
-          <div className="relative">
+          <div 
+            className={`relative transition-all duration-1000 delay-500 ${
+              visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={1}
+          >
             <div className="rounded-2xl overflow-hidden shadow-strong">
               <img
                 src={teamConsulting}
@@ -548,7 +763,12 @@ const WhyInfoSource = () => {
           </div>
 
           {/* Content Side */}
-          <div>
+          <div 
+            className={`transition-all duration-1000 delay-600 ${
+              visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            } animate-on-scroll`}
+            data-index={2}
+          >
             <h3 className="text-3xl font-bold text-foreground mb-8">
               Embracing the AI-Driven Future
             </h3>
@@ -580,7 +800,13 @@ const WhyInfoSource = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <Card key={index} className="hover:shadow-medium transition-all duration-300 border-border bg-gradient-card">
+              <Card 
+                key={index} 
+                className={`hover:shadow-medium transition-all duration-500 border-border bg-gradient-card ${
+                  visibleItems.includes(3 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } animate-on-scroll`}
+                data-index={3 + index}
+              >
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
@@ -600,7 +826,12 @@ const WhyInfoSource = () => {
         </div>
 
         {/* Achievements */}
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div 
+          className={`bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center transition-all duration-1000 delay-500 ${
+            visibleItems.includes(7) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          } animate-on-scroll`}
+          data-index={7}
+        >
           <h3 className="text-2xl font-bold text-white mb-8">Our Track Record</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => {
