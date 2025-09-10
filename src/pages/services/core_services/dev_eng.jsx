@@ -69,23 +69,25 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-24 pb-16">
         <div
           className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
-          <Code className="w-5 h-5 text-blue-500" />
+          <Code className="w-4 h-4 text-blue-500" />
           <span className="text-sm font-medium text-blue-500 font-sans">
             Software Development Services
           </span>
         </div>
         <h1
-          className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+          className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } text-black font-sans`}
+          } text-black font-sans animate-on-scroll`}
+          data-index={0}
         >
           Empower Your{" "}
           <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -94,21 +96,23 @@ const HeroSection = () => {
           </span>
         </h1>
         <p
-          className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+          className={`text-lg text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } font-sans`}
+          } font-sans animate-on-scroll`}
+          data-index={0}
         >
           Next-generation software development solutions to drive efficiency, innovation, and growth.
         </p>
         <div
           className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
           <Button
             variant="hero"
             size="xl"
-            className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gradient-to-r hover:from-blue-700 hover:to-blue-500 text-white font-sans"
+            className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
             asChild
           >
             <a href="/contact" aria-label="Get a free consultation">
@@ -122,14 +126,12 @@ const HeroSection = () => {
           <Button
             variant="glass"
             size="xl"
-            className="group bg-black/10 font-sans"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
             asChild
           >
             <a href="/software-solutions" aria-label="Explore software solutions">
-              <Code className="w-5 h-5 text-blue-500 group-hover:text-blue-600 transition-colors" />
-              <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-                Explore Software Solutions
-              </span>
+              <Code className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
+              Explore Software Solutions
             </a>
           </Button>
         </div>
@@ -163,53 +165,56 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
-            <LineChart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white font-sans">
+            <LineChart className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">
               Software Development Trends
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-5xl font-bold text-white mb-6 font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold text-black mb-6 font-sans transition-all duration-1000 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Driving <span className="text-blue-200">Competitive Advantage</span>
+            Driving <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Competitive Advantage</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <Card
-                key={index}
-                className={`bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/20 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-white" />
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={index}
+                  className={`text-center transition-all duration-500 ${
+                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  } animate-on-scroll`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  data-index={3 + index}
+                >
+                  <div className="flex justify-center mb-3">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
                   </div>
-                  <div className="text-3xl font-bold text-white mb-2 font-sans">
-                    <AnimatedCounter end={stat.value.replace(/[^0-9.]/g, "")} suffix={stat.value.replace(/[0-9.]/g, "")} />
+                  <div className="text-2xl font-bold text-white mb-2 font-sans">
+                    <AnimatedCounter end={parseFloat(stat.value.replace(/[^0-9.]/g, ""))} suffix={stat.value.replace(/[0-9.]/g, "")} />
                   </div>
-                  <p className="text-white/80 text-sm mb eisenreliefert mb-3 leading-relaxed font-sans">{stat.label}</p>
-                  <div className="text-white/60 text-xs font-semibold">– {stat.source}</div>
-                </CardContent>
-              </Card>
-            );
-          })}
+                  <p className="text-white/80 text-sm mb-3 leading-relaxed font-sans">{stat.label}</p>
+                  <div className="text-white/60 text-xs font-semibold font-sans">– {stat.source}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -234,13 +239,14 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Zap className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -248,9 +254,10 @@ const ServicesSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Code Your{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -258,9 +265,10 @@ const ServicesSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             End-to-end custom software development to modernize your business.
           </p>
@@ -268,7 +276,8 @@ const ServicesSection = () => {
         <div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={3}
         >
           {[
             {
@@ -324,7 +333,10 @@ const ServicesSection = () => {
             return (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={4 + index}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
@@ -340,12 +352,12 @@ const ServicesSection = () => {
           <Button
             variant="hero"
             size="lg"
-            className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gradient-to-r hover:from-blue-700 hover:to-blue-500 text-white font-sans"
+            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
             asChild
           >
             <a href="/contact" aria-label="Talk to our experts">
               Talk to Our Experts
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
         </div>
@@ -386,38 +398,39 @@ const TechStackSection = () => {
     {
       icon: Monitor,
       title: "Front-End",
-      color: "from-green-500 to-green-700",
+      color: "from-blue-500 to-blue-700",
     },
     {
       icon: Code,
       title: "Back-End",
-      color: "from-purple-500 to-purple-700",
+      color: "from-blue-500 to-blue-700",
     },
     {
       icon: Database,
       title: "Database",
-      color: "from-red-500 to-red-700",
+      color: "from-blue-500 to-blue-700",
     },
     {
       icon: Cloud,
       title: "Cloud & DevOps",
-      color: "from-indigo-500 to-indigo-700",
+      color: "from-blue-500 to-blue-700",
     },
     {
       icon: FileText,
       title: "CMS & eCommerce",
-      color: "from-teal-500 to-teal-700",
+      color: "from-blue-500 to-blue-700",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Settings className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -425,9 +438,10 @@ const TechStackSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Modern{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -435,9 +449,10 @@ const TechStackSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Leveraging cutting-edge technologies like React, Node.js, AWS, and more to deliver scalable solutions.
           </p>
@@ -451,17 +466,17 @@ const TechStackSection = () => {
                 key={index}
                 data-index={index}
                 className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${
-                  isItemVisible ? "animate-fade-in-up" : ""
-                } bg-white`}
+                  isItemVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll bg-black/5`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center">
                   <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`w-12 h-12 mx-auto mb-6 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
+                  <h3 className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
                     {tech.title}
                   </h3>
                 </CardContent>
@@ -473,12 +488,12 @@ const TechStackSection = () => {
           <Button
             variant="hero"
             size="lg"
-            className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gradient-to-r hover:from-blue-700 hover:to-blue-500 text-white font-sans"
+            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
             asChild
           >
             <a href="/tech-stack" aria-label="Explore our tech stack">
               Explore Our Tech Stack
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
         </div>
@@ -533,11 +548,14 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={"inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <TrendingUp className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -545,7 +563,10 @@ const ProcessSection = () => {
             </span>
           </div>
           <h2
-            className={"text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
             Structured{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -553,49 +574,53 @@ const ProcessSection = () => {
             </span>
           </h2>
           <p
-            className={"text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
             A well-defined approach to deliver high-quality software solutions.
           </p>
         </div>
-        <div className={"grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 delay-600 " + (isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {processes.map((process, index) => {
             const Icon = process.icon;
             return (
               <Card
                 key={index}
-                className={"hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 " + (isVisible ? "animate-fade-in-up" : "")}
+                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">{process.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold text-black font-sans">{process.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">{process.description}</CardDescription>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{process.description}</CardDescription>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">Explore our software-driven success stories.</p>
           <p className="text-blue-100 mb-8 font-sans">Driving innovation across industries with custom software.</p>
           <Button
-            variant="outline"
-            className="border-white hover:bg-white hover:text-blue-600 font-sans"
+            variant="glass"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans"
             asChild
           >
             <a href="/case-studies" aria-label="View software case studies">
-              <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-                View Our Case Studies
-              </span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              View Our Case Studies
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
         </div>
@@ -650,13 +675,14 @@ const UseCasesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Star className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -664,9 +690,10 @@ const UseCasesSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Optimizing with{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -674,9 +701,10 @@ const UseCasesSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Leveraging innovative technologies to create smarter, efficient systems.
           </p>
@@ -687,21 +715,22 @@ const UseCasesSection = () => {
             return (
               <Card
                 key={index}
-                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">{useCase.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold text-black font-sans">{useCase.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">{useCase.description}</CardDescription>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{useCase.description}</CardDescription>
                 </CardContent>
               </Card>
             );
@@ -711,126 +740,14 @@ const UseCasesSection = () => {
           <Button
             variant="hero"
             size="lg"
-            className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-gradient-to-r hover:from-blue-700 hover:to-blue-500 text-white font-sans"
+            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
             asChild
           >
             <a href="/use-cases" aria-label="Explore use cases">
               Explore More Use Cases
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const ImpactSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden"
-    >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white font-sans">
-              Our Software Impact
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">
-            Transforming <span className="text-blue-200">Businesses</span> with Software
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Discover how our custom software solutions drive innovation and growth.
-          </p>
-        </div>
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {[
-            {
-              icon: Star,
-              title: "Case Studies",
-              description: "Explore our software-driven success stories across industries.",
-              buttonText: "View Our Case Studies",
-              href: "/case-studies",
-            },
-            {
-              icon: TrendingUp,
-              title: "Industries",
-              description: "Tailored software solutions for diverse sectors.",
-              buttonText: "Discover Industry Solutions",
-              href: "/industries",
-            },
-            {
-              icon: Users,
-              title: "Testimonials",
-              description: "Hear how our software transformed client businesses.",
-              buttonText: "Read Testimonials",
-              href: "/testimonials",
-            },
-            {
-              icon: FileText,
-              title: "Resources",
-              description: "Access insights, trends, and guides on software development.",
-              buttonText: "Explore Software Resources",
-              href: "/resources",
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={index}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300"
-              >
-                <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2 text-white font-sans">{item.title}</h3>
-                  <p className="text-sm text-white/80 font-sans">{item.description}</p>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="mt-4 border-white hover:bg-white hover:text-blue-600 font-sans"
-                    asChild
-                  >
-                    <a href={item.href}>
-                      <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-                        {item.buttonText}
-                      </span>
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -846,13 +763,13 @@ const DevEng = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = parseInt(entry.target.getAttribute("data-index") || "0");
-            setVisibleItems((prev) => [...prev, index]);
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
           }
         });
       },
       { threshold: 0.2 }
     );
-    const items = document.querySelectorAll(".tech-card");
+    const items = document.querySelectorAll(".animate-on-scroll");
     items?.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);
@@ -867,7 +784,6 @@ const DevEng = () => {
         <TechStackSection />
         <ProcessSection />
         <UseCasesSection />
-        <ImpactSection />
       </main>
       <Footer />
     </div>
