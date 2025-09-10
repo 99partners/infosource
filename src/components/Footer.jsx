@@ -1,7 +1,7 @@
 import { Code, Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/Infosource.png';
-
+ 
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden border-t border-white/10">

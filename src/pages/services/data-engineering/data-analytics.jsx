@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Component } from "react";
 import Navigation from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,8 +12,6 @@ import {
 import {
   ArrowRight,
   Heart,
-  Brain,
-  Activity,
   Shield,
   Users,
   TrendingUp,
@@ -21,7 +19,6 @@ import {
   Star,
   Zap,
   Target,
-  Globe,
   Award,
   MessageCircle,
   Calendar,
@@ -29,21 +26,33 @@ import {
   BarChart3,
   Database,
   Eye,
-  Bot,
-  Monitor,
   Settings,
-  User,
-  Smartphone,
-  LineChart,
-  Microscope,
-  Pill,
-  FlaskConical,
   FileText,
   Clock,
   AlertTriangle,
   Search,
   Cloud,
+  LineChart,
 } from "lucide-react";
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong. Please try again later.</h1>;
+    }
+    return this.props.children;
+  }
+}
 
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -51,10 +60,7 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
     let startTime = null;
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
-      const progress = Math.min(
-        (currentTime - startTime) / (duration * 1000),
-        1
-      );
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
       setCount(Math.floor(progress * end));
       if (progress < 1) requestAnimationFrame(animate);
     };
@@ -76,43 +82,48 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16">
         <div
           className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
-          <Target className="w-5 h-5 text-blue-500" />
+          <Target className="w-4 h-4 text-blue-500" />
           <span className="text-sm font-medium text-blue-500 font-sans">
             Data Analytics Services
           </span>
         </div>
         <h1
-          className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+          className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } text-black font-sans`}
+          } text-black font-sans animate-on-scroll`}
+          data-index={0}
         >
-          Harness{" "}
           <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
             Data Analytics
+          </span>
+          <br />
+          <span className="relative">
+            for Enterprise Growth
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
           </span>
         </h1>
         <p
-          className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+          className={`text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } font-sans`}
+          } font-sans animate-on-scroll`}
+          data-index={0}
         >
-          Harness the strength of Data Analytics to convert knowledge into
-          planned expansion. Our offerings streamline activities, improve client
-          interactions, and increase income.
+          Harness the power of Data Analytics to transform insights into strategic growth. Our solutions streamline operations, enhance customer experiences, and boost revenue.
         </p>
         <div
           className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
           <Button
             variant="hero"
@@ -128,7 +139,7 @@ const HeroSection = () => {
           <Button
             variant="glass"
             size="xl"
-            className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
           >
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
             Discover More on Data Analytics
@@ -157,15 +168,14 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Zap className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -173,11 +183,10 @@ const ServicesSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
             Our{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -186,49 +195,50 @@ const ServicesSection = () => {
             Offerings
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Our Data and Analytics offerings transform unprocessed data into
-            concrete enterprise worth, streamlining activities and driving
-            growth.
+            Our Data and Analytics services transform raw data into tangible business value, optimizing operations and driving growth.
           </p>
         </div>
         <div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={3}
         >
           {[
             {
               icon: BarChart3,
-              text: "Data Evaluation and Reporting: Convert data into practical views via sophisticated analytics and enterprise patterns.",
+              text: "Data Analysis and Reporting: Transform data into actionable insights using advanced analytics and business intelligence.",
             },
             {
               icon: LineChart,
-              text: "Predictive Analytics: Employ advanced formulas and machine learning to predict upcoming patterns and actions.",
+              text: "Predictive Analytics: Leverage advanced algorithms and machine learning to forecast future trends and behaviors.",
             },
             {
               icon: Database,
-              text: "Descriptive Analytics: Review past data to grasp performance and reveal patterns, offering a distinct business perspective.",
+              text: "Descriptive Analytics: Analyze historical data to understand performance and uncover patterns for clear business insights.",
             },
             {
               icon: Settings,
-              text: "Prescriptive Analytics: Suggest ideal actions drawn from data-based forecasts, refining choices and processes.",
+              text: "Prescriptive Analytics: Recommend optimal actions based on data-driven predictions to enhance decision-making.",
             },
             {
               icon: Search,
-              text: "Diagnostic Analytics: Reveal causes of problems and patterns, supporting resolution and choice making.",
+              text: "Diagnostic Analytics: Identify root causes of issues and trends to support problem resolution and decision-making.",
             },
           ].map((point, index) => {
             const Icon = point.icon;
             return (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={4 + index}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
@@ -257,16 +267,17 @@ const TechStackSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute("data-index") || "0"
-            );
-            setVisibleItems((prev) => [...prev, index]);
-            setIsVisible(true);
+            const index = parseInt(entry.target.getAttribute("data-index") || "0");
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+            if (entry.target === sectionRef.current) {
+              setIsVisible(true);
+            }
           }
         });
       },
       { threshold: 0.2 }
     );
+    if (sectionRef.current) observer.observe(sectionRef.current);
     const items = sectionRef.current?.querySelectorAll(".tech-card");
     items?.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
@@ -275,52 +286,55 @@ const TechStackSection = () => {
   const technologies = [
     {
       icon: Database,
-      title: "Data Gathering and Merging",
-      color: "from-blue-500 to-blue-700",
+      title: "Data Gathering and Integration",
+      description: "Seamlessly collect and integrate data from diverse sources.",
     },
     {
       icon: Settings,
-      title: "Data Handling and Change",
-      color: "from-green-500 to-green-700",
+      title: "Data Processing and Transformation",
+      description: "Efficiently process and transform data for analysis.",
     },
     {
       icon: BarChart3,
-      title: "Data Evaluation and Modeling",
-      color: "from-purple-500 to-purple-700",
+      title: "Data Analysis and Modeling",
+      description: "Advanced analytics and modeling for actionable insights.",
     },
-    { icon: Eye, title: "Data Display", color: "from-red-500 to-red-700" },
+    {
+      icon: Eye,
+      title: "Data Visualization",
+      description: "Transform complex data into clear, interactive visuals.",
+    },
     {
       icon: FileText,
-      title: "Reporting and Panels",
-      color: "from-indigo-500 to-indigo-700",
+      title: "Reporting and Dashboards",
+      description: "Create dynamic reports and dashboards for decision-making.",
     },
     {
       icon: Shield,
-      title: "Data Handling and Oversight",
-      color: "from-blue-500 to-blue-700",
+      title: "Data Governance and Compliance",
+      description: "Ensure data security and regulatory compliance.",
     },
     {
       icon: Cloud,
-      title: "Data Merging and APIs",
-      color: "from-green-500 to-green-700",
+      title: "Data Integration and APIs",
+      description: "Integrate data seamlessly with APIs and cloud solutions.",
     },
     {
       icon: Zap,
       title: "Data Automation",
-      color: "from-purple-500 to-purple-700",
+      description: "Automate data workflows for efficiency and scalability.",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Settings className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -328,11 +342,10 @@ const TechStackSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
             Empowering{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -340,14 +353,12 @@ const TechStackSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Our sophisticated tech collection provides precise, practical, and
-            data-oriented Data Analytics offerings.
+            Our advanced technology stack delivers accurate, actionable, and data-driven analytics solutions.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -358,20 +369,25 @@ const TechStackSection = () => {
               <Card
                 key={index}
                 data-index={index}
-                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${
-                  isItemVisible ? "animate-fade-in-up" : ""
-                } bg-white`}
+                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer bg-black/5 ${
+                  isItemVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-8 text-center">
+                <CardHeader className="text-center">
                   <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
+                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
                     {tech.title}
-                  </h3>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
+                    {tech.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             );
@@ -383,7 +399,7 @@ const TechStackSection = () => {
             size="lg"
             className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
           >
-            Uncover Our Tech
+            Uncover Our Tech Stack
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
@@ -412,46 +428,40 @@ const ProcessSection = () => {
   const processes = [
     {
       icon: Target,
-      title: "Outlining Aims",
-      description:
-        "Distinctly define the particular queries or aims to examine the goals to resolve.",
+      title: "Defining Objectives",
+      description: "Clearly outline specific goals and questions to address business needs.",
     },
     {
       icon: Database,
-      title: "Gathering Data",
-      description:
-        "Collect pertinent data from diverse origins in an organized form.",
+      title: "Data Collection",
+      description: "Gather relevant data from multiple sources in a structured format.",
     },
     {
       icon: AlertTriangle,
-      title: "Purifying Data",
-      description:
-        "Spot and fix mistakes, absent values, and discrepancies in the data sheet.",
+      title: "Data Cleaning",
+      description: "Identify and correct errors, missing values, and inconsistencies in datasets.",
     },
     {
       icon: BarChart3,
-      title: "Evaluating Data",
-      description:
-        "Use statistical and machine learning methods to spot patterns and trends.",
+      title: "Data Analysis",
+      description: "Apply statistical and machine learning techniques to identify trends and patterns.",
     },
     {
       icon: CheckCircle,
-      title: "Interpreting Data",
-      description:
-        "Change understanding into applicable suggestions based on results.",
+      title: "Data Interpretation",
+      description: "Transform insights into actionable recommendations based on analysis results.",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <TrendingUp className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -459,24 +469,20 @@ const ProcessSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Effective <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-Data Analytics</span>{" "}
-            Process
+            Our <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Data Analytics</span> Process
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Our optimized Data Analytics method delivers knowledge quicker.
+            Our streamlined Data Analytics process delivers insights faster.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -486,22 +492,23 @@ Data Analytics</span>{" "}
               <Card
                 key={index}
                 className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {process.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {process.description}
                   </CardDescription>
                 </CardContent>
@@ -509,20 +516,16 @@ Data Analytics</span>{" "}
             );
           })}
         </div>
-        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
-          <p className="text-lg mb-6 font-sans">
-            Review our notable Data Analytics case studies
-          </p>
-          <p className="text-blue-100 mb-8 font-sans">
-            Observe how we promote enterprise expansion across industries.
-          </p>
+          <p className="text-lg mb-6 font-sans">Explore our impactful Data Analytics case studies</p>
+          <p className="text-blue-100 mb-8 font-sans">See how we drive business growth across industries.</p>
           <Button
-            variant="outline"
-            className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
+            variant="glass"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-blue-600 font-sans"
           >
             View Our Case Studies
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -550,27 +553,23 @@ const WhyChooseSection = () => {
   const features = [
     {
       icon: Target,
-      title: "Sophisticated Data Modeling",
-      description:
-        "Sophisticated formulas and statistical methods to forecast patterns and form knowledgeable choices.",
+      title: "Advanced Data Modeling",
+      description: "Leverage sophisticated algorithms and statistical methods to predict trends and inform decisions.",
     },
     {
       icon: Eye,
-      title: "Thorough Data Display",
-      description:
-        "Change intricate data into clear visual form for improved planned preparation.",
+      title: "Comprehensive Data Visualization",
+      description: "Transform complex data into clear, actionable visual representations.",
     },
     {
       icon: Shield,
-      title: "Data-Driven Results",
-      description:
-        "Unlock data's complete potential with precise and actionable insights.",
+      title: "Data-Driven Outcomes",
+      description: "Unlock the full potential of data with precise and actionable insights.",
     },
     {
       icon: Heart,
       title: "Client-Centric Approach",
-      description:
-        "Your data, our skills, and outstanding results as your trusted partner.",
+      description: "Your data, our expertise, and exceptional results as your trusted partner.",
     },
   ];
 
@@ -583,15 +582,14 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Award className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -599,24 +597,20 @@ const WhyChooseSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-Infosource?</span>
+            Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Unlock data's complete potential with Infosource, your trusted Data
-            Analytics firm.
+            Unlock the full potential of data with Infosource, your trusted Data Analytics partner.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -625,23 +619,24 @@ Infosource?</span>
             return (
               <Card
                 key={index}
-                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {feature.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -649,17 +644,17 @@ Infosource?</span>
             );
           })}
         </div>
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-8 font-sans">
             Our Track Record
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
                 <div key={index} className="text-center">
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -705,90 +700,85 @@ const ImpactSection = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden"
-    >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <div
           className={`transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={1}
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white font-sans">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
+            <Heart className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">
               Our Impact
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">
-            Transforming <span className="text-blue-200">Businesses</span> with
-            Data
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Transforming <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Businesses</span> with Data
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Discover how Infosource’s Data Analytics solutions drive enterprise
-            expansion across industries.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+            Discover how Infosource’s Data Analytics solutions drive business growth across industries.
           </p>
         </div>
         <div
           className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={2}
         >
           {[
             {
               icon: Star,
               title: "Case Studies",
-              description:
-                "Review our notable Data Analytics case studies and observe how we promote enterprise expansion.",
+              description: "Explore our impactful Data Analytics case studies and see how we drive business growth.",
               buttonText: "View Our Case Studies",
             },
             {
               icon: TrendingUp,
               title: "Industries",
-              description:
-                "Data Analytics achievements across sectors, transforming enterprises with knowledge.",
-              buttonText: "Arrange a Complimentary AI Discussion",
+              description: "Data Analytics success across sectors, transforming businesses with insights.",
+              buttonText: "Schedule a Free Analytics Consultation",
             },
             {
               icon: Users,
               title: "Testimonials",
-              description:
-                "Our clients express how Infosource’s Data Analytics offerings have changed enterprises.",
-              buttonText: "Our Clients Express for Us",
+              description: "Our clients share how Infosource’s Data Analytics solutions have transformed their businesses.",
+              buttonText: "Hear from Our Clients",
             },
             {
               icon: CheckCircle,
               title: "Resources",
-              description:
-                "Review specialist pieces, patterns, and advice to master Data Analytics.",
-              buttonText: "Access Data Analytics Blogs",
+              description: "Access expert articles, trends, and tips to master Data Analytics.",
+              buttonText: "Explore Analytics Resources",
             },
           ].map((item, index) => {
             const Icon = item.icon;
             return (
               <Card
                 key={index}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={3 + index}
               >
                 <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-white font-sans">
+                  <h3 className="font-semibold mb-2 text-black font-sans">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-white/80 font-sans">
+                  <p className="text-sm text-gray-600 font-sans">
                     {item.description}
                   </p>
                   <Button
-                    variant="outline"
+                    variant="glass"
                     size="lg"
-                    className="mt-4 border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
+                    className="mt-4 group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
                   >
                     {item.buttonText}
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardContent>
               </Card>
@@ -801,19 +791,41 @@ const ImpactSection = () => {
 };
 
 const DataAnalytics = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute("data-index") || "0");
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll(".animate-on-scroll");
+    items?.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <TechStackSection />
-        <ProcessSection />
-        <WhyChooseSection />
-        <ImpactSection />
-      </main>
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-white">
+        <Navigation />
+        <main>
+          <HeroSection />
+          <ServicesSection />
+          <TechStackSection />
+          <ProcessSection />
+          <WhyChooseSection />
+          <ImpactSection />
+        </main>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 };
 

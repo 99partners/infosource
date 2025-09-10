@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Component } from "react";
 import Navigation from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,8 +12,6 @@ import {
 import {
   ArrowRight,
   Heart,
-  Brain,
-  Activity,
   Shield,
   Users,
   TrendingUp,
@@ -21,29 +19,38 @@ import {
   Star,
   Zap,
   Target,
-  Globe,
   Award,
   MessageCircle,
   Calendar,
   Play,
   BarChart3,
   Database,
-  Eye,
-  Bot,
-  Monitor,
   Settings,
-  User,
-  Smartphone,
-  LineChart,
-  Microscope,
-  Pill,
-  FlaskConical,
   FileText,
   Clock,
-  AlertTriangle,
   Search,
   Cloud,
+  Monitor,
 } from "lucide-react";
+
+class ErrorBoundary extends Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong. Please try again later.</h1>;
+    }
+    return this.props.children;
+  }
+}
 
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -51,10 +58,7 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
     let startTime = null;
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
-      const progress = Math.min(
-        (currentTime - startTime) / (duration * 1000),
-        1
-      );
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
       setCount(Math.floor(progress * end));
       if (progress < 1) requestAnimationFrame(animate);
     };
@@ -76,42 +80,48 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16">
         <div
           className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
-          <Database className="w-5 h-5 text-blue-500" />
+          <Database className="w-4 h-4 text-blue-500" />
           <span className="text-sm font-medium text-blue-500 font-sans">
             Data Warehousing Services
           </span>
         </div>
         <h1
-          className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+          className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } text-black font-sans`}
+          } text-black font-sans animate-on-scroll`}
+          data-index={0}
         >
-          Safeguard Your Enterprise with{" "}
           <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
             Data Warehousing
+          </span>
+          <br />
+          <span className="relative">
+            for Enterprise Success
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
           </span>
         </h1>
         <p
-          className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+          className={`text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } font-sans`}
+          } font-sans animate-on-scroll`}
+          data-index={0}
         >
-          Boost your data movement and revamp your enterprise with our
-          sophisticated Data Warehousing tools.
+          Optimize your data infrastructure and transform your business with our advanced Data Warehousing and ETL solutions.
         </p>
         <div
           className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
           <Button
             variant="hero"
@@ -120,17 +130,17 @@ const HeroSection = () => {
           >
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />
-              Obtain a Complimentary Data Discussion
+              Schedule a Free Data Consultation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
           <Button
             variant="glass"
             size="xl"
-            className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
           >
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
-            Progress Your Data Movement
+            Advance Your Data Strategy
           </Button>
         </div>
       </div>
@@ -156,15 +166,14 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Zap className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -172,61 +181,62 @@ const ServicesSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
             Our{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
               Data Warehousing
             </span>{" "}
-            Offerings
+            Solutions
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Improve your data movement with sophisticated Data Warehousing
-            offerings to boost enterprise efficiency.
+            Optimize your data infrastructure with advanced Data Warehousing and ETL solutions to enhance business efficiency.
           </p>
         </div>
         <div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={3}
         >
           {[
             {
               icon: FileText,
-              text: "Data Warehouse Plan & Advice: Form a detailed data plan that matches your entity's strategic aims.",
+              text: "Data Warehouse Strategy & Consulting: Develop a comprehensive data strategy aligned with your business goals.",
             },
             {
               icon: Database,
-              text: "Data Warehouse Creation: Plan and build a data warehouse to back your enterprise's needs.",
+              text: "Data Warehouse Design: Design and implement a data warehouse tailored to your business needs.",
             },
             {
               icon: Settings,
-              text: "Data Warehouse Improvement: Spot and fix performance blocks to enhance query times and productivity.",
+              text: "Data Warehouse Optimization: Identify and resolve performance bottlenecks to improve query performance.",
             },
             {
               icon: Cloud,
-              text: "Data Warehouse Transfer: Handle the transfer of data warehouses to fresh platforms or settings.",
+              text: "Data Warehouse Migration: Seamlessly migrate data warehouses to new platforms or environments.",
             },
             {
               icon: Target,
-              text: "Data Warehouse Plan: Plan a structure that matches enterprise aims and supports data-oriented choices.",
+              text: "Data Warehouse Architecture: Create a scalable architecture to support data-driven decision-making.",
             },
           ].map((point, index) => {
             const Icon = point.icon;
             return (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={4 + index}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
@@ -255,16 +265,17 @@ const TechStackSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute("data-index") || "0"
-            );
-            setVisibleItems((prev) => [...prev, index]);
-            setIsVisible(true);
+            const index = parseInt(entry.target.getAttribute("data-index") || "0");
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+            if (entry.target === sectionRef.current) {
+              setIsVisible(true);
+            }
           }
         });
       },
       { threshold: 0.2 }
     );
+    if (sectionRef.current) observer.observe(sectionRef.current);
     const items = sectionRef.current?.querySelectorAll(".tech-card");
     items?.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
@@ -273,51 +284,50 @@ const TechStackSection = () => {
   const technologies = [
     {
       icon: Cloud,
-      title: "Cloud-Oriented Data Warehouses",
-      color: "from-blue-500 to-blue-700",
+      title: "Cloud-Based Data Warehouses",
+      description: "Leverage scalable cloud solutions like Snowflake, AWS Redshift, and Google BigQuery.",
     },
     {
       icon: Database,
-      title: "Local Data Warehouses",
-      color: "from-green-500 to-green-700",
+      title: "On-Premises Data Warehouses",
+      description: "Deploy robust on-premises solutions like Oracle and Teradata.",
     },
     {
       icon: Settings,
-      title: "ETL/ELT Coordination Tools",
-      color: "from-purple-500 to-purple-700",
+      title: "ETL/ELT Orchestration Tools",
+      description: "Streamline data pipelines with tools like Apache Airflow and Informatica.",
     },
     {
       icon: Search,
-      title: "Data Removal Tools",
-      color: "from-red-500 to-red-700",
+      title: "Data Extraction Tools",
+      description: "Extract data efficiently using Apache NiFi, Fivetran, and Stitch.",
     },
     {
       icon: Monitor,
-      title: "Oversight and Handling Tools",
-      color: "from-indigo-500 to-indigo-700",
+      title: "Monitoring and Management Tools",
+      description: "Ensure performance with tools like Datadog and AWS CloudWatch.",
     },
     {
       icon: BarChart3,
       title: "Data Modeling Tools",
-      color: "from-blue-500 to-blue-700",
+      description: "Build robust data models with tools like ER/Studio and dbt.",
     },
     {
       icon: Shield,
-      title: "Data Oversight Tools",
-      color: "from-green-500 to-green-700",
+      title: "Data Governance Tools",
+      description: "Maintain compliance with tools like Collibra and Alation.",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Settings className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -325,26 +335,24 @@ const TechStackSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Cutting-Edge{" "}
+            Advanced{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
               Data Warehousing
             </span>{" "}
             Tools
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Uncover the tech behind our outstanding Data Warehouse tools.
+            Discover the technology powering our exceptional Data Warehousing and ETL solutions.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -355,20 +363,25 @@ const TechStackSection = () => {
               <Card
                 key={index}
                 data-index={index}
-                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${
-                  isItemVisible ? "animate-fade-in-up" : ""
-                } bg-white`}
+                className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer bg-black/5 ${
+                  isItemVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-8 text-center">
+                <CardHeader className="text-center">
                   <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
+                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
                     {tech.title}
-                  </h3>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
+                    {tech.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             );
@@ -380,7 +393,7 @@ const TechStackSection = () => {
             size="lg"
             className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
           >
-            Review Tech
+            Explore Our Tech Stack
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
@@ -409,46 +422,40 @@ const ProcessSection = () => {
   const processes = [
     {
       icon: Search,
-      title: "Data Removal",
-      description:
-        "Gather data from diverse origins using various tools like Apache NiFi, Fivetran, and others.",
+      title: "Data Extraction",
+      description: "Extract data from diverse sources using tools like Apache NiFi, Fivetran, and Stitch.",
     },
     {
       icon: Cloud,
-      title: "Data Placement",
-      description:
-        "Keep the removed data in the preparation zone or straight in the data warehouse via cloud storage.",
+      title: "Data Storage",
+      description: "Store extracted data in a staging area or directly in the data warehouse via cloud storage.",
     },
     {
       icon: Settings,
-      title: "Data Change",
-      description:
-        "Purify and organize the data for review using tools and implementing business guidelines.",
+      title: "Data Transformation",
+      description: "Clean and structure data for analysis using ETL tools and business rules.",
     },
     {
       icon: Database,
-      title: "Data Keeping",
-      description:
-        "Arrange and keep changed data in a Data Warehouse for effective review and querying.",
+      title: "Data Warehousing",
+      description: "Organize and store transformed data in a scalable data warehouse for efficient querying.",
     },
     {
       icon: BarChart3,
-      title: "Data Review & Reporting",
-      description:
-        "Allow enterprise users to retrieve and review data using business tools for data-oriented choices.",
+      title: "Data Analysis & Reporting",
+      description: "Enable business users to access and analyze data using BI tools for informed decisions.",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <TrendingUp className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -456,27 +463,24 @@ const ProcessSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Fluid{" "}
+            Streamlined{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-              Data Warehouse
+              Data Warehousing
             </span>{" "}
-            and ETL Process
+            & ETL Process
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Our gradual method ensures efficient Data Warehousing and ETL
-            procedures.
+            Our efficient process ensures seamless Data Warehousing and ETL operations for business success.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -486,22 +490,23 @@ const ProcessSection = () => {
               <Card
                 key={index}
                 className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {process.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {process.description}
                   </CardDescription>
                 </CardContent>
@@ -509,21 +514,16 @@ const ProcessSection = () => {
             );
           })}
         </div>
-        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
-          <p className="text-lg mb-6 font-sans">
-            Uncover how we've aided enterprises succeed
-          </p>
-          <p className="text-blue-100 mb-8 font-sans">
-            Review our case studies to observe how Infosource’s Data Warehousing
-            & ETL tools have provided concrete outcomes.
-          </p>
+          <p className="text-lg mb-6 font-sans">Discover how we’ve empowered businesses to succeed</p>
+          <p className="text-blue-100 mb-8 font-sans">Explore our case studies to see how Infosource’s Data Warehousing solutions deliver results.</p>
           <Button
-            variant="outline"
-            className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
+            variant="glass"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-blue-600 font-sans"
           >
-            See Case Studies
-            <ArrowRight className="w-5 h-5 ml-2" />
+            View Case Studies
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -551,27 +551,23 @@ const WhyChooseSection = () => {
   const features = [
     {
       icon: Database,
-      title: "Expandable Data Setup",
-      description:
-        "Construct a robust and expandable data warehouse plan to manage huge data amounts and efficiency.",
+      title: "Scalable Data Architecture",
+      description: "Build a robust and scalable data warehouse architecture to handle large data volumes efficiently.",
     },
     {
       icon: Settings,
-      title: "Thorough Data Change",
-      description:
-        "Use strong ETL procedures to change unprocessed data into perceptive, practical knowledge and choices.",
+      title: "Comprehensive ETL Processes",
+      description: "Transform raw data into actionable insights using robust ETL pipelines.",
     },
     {
       icon: Shield,
-      title: "Data-Driven Results",
-      description:
-        "Attain your enterprise aims via data superiority with Infosource’s expertise.",
+      title: "Data-Driven Success",
+      description: "Achieve your business goals with superior data infrastructure and expertise.",
     },
     {
       icon: Heart,
       title: "Client-Centric Approach",
-      description:
-        "Select Infosource for skills, tools, and dedication to changing data into a potent resource.",
+      description: "Partner with Infosource for expertise, tools, and commitment to turning data into a powerful asset.",
     },
   ];
 
@@ -584,15 +580,14 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Award className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -600,25 +595,20 @@ const WhyChooseSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Why Choose{" "}
-            <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
-              Infosource?
-            </span>
+            Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            } animate-on-scroll`}
+            data-index={2}
           >
-            Attain your enterprise aims via data superiority with Infosource.
+            Achieve your business goals with superior data infrastructure from Infosource.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -627,23 +617,24 @@ const WhyChooseSection = () => {
             return (
               <Card
                 key={index}
-                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
+                data-index={3 + index}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {feature.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -651,17 +642,17 @@ const WhyChooseSection = () => {
             );
           })}
         </div>
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-8 font-sans">
             Our Track Record
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
                 <div key={index} className="text-center">
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -680,7 +671,7 @@ const WhyChooseSection = () => {
             size="lg"
             className="mt-8 bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
           >
-            Enhance Your Data Plan
+            Optimize Your Data Strategy
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
@@ -707,90 +698,85 @@ const ImpactSection = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden"
-    >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <div
           className={`transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={1}
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white font-sans">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
+            <Heart className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-blue-500 font-sans">
               Our Impact
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">
-            Transforming <span className="text-blue-200">Businesses</span> with
-            Data
+          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
+            Transforming <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Businesses</span> with Data
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Discover how Infosource’s Data Warehousing & ETL tools drive
-            enterprise success across industries.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+            Discover how Infosource’s Data Warehousing and ETL solutions drive business success across industries.
           </p>
         </div>
         <div
           className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={2}
         >
           {[
             {
               icon: Star,
               title: "Case Studies",
-              description:
-                "Review our case studies to observe how Infosource’s Data Warehousing & ETL tools have provided concrete outcomes.",
-              buttonText: "See Case Studies",
+              description: "Explore our case studies to see how Infosource’s Data Warehousing solutions deliver tangible results.",
+              buttonText: "View Case Studies",
             },
             {
               icon: TrendingUp,
               title: "Industries",
-              description:
-                "Data-oriented change across diverse sectors with Infosource’s tailored Data Warehousing advice.",
-              buttonText: "Arrange a Complimentary AI Discussion",
+              description: "Data-driven transformation across sectors with Infosource’s tailored Data Warehousing solutions.",
+              buttonText: "Schedule a Free Data Consultation",
             },
             {
               icon: Users,
               title: "Testimonials",
-              description:
-                "Listen straight from our clients on how our Data Warehousing & ETL tools have strengthened their enterprises.",
-              buttonText: "Uncover Client Achievement",
+              description: "Hear from our clients about how Infosource’s solutions have empowered their businesses.",
+              buttonText: "Discover Client Success",
             },
             {
               icon: CheckCircle,
               title: "Resources",
-              description:
-                "Review our recent data perspectives and remain current on sector patterns and innovations.",
-              buttonText: "See All Blogs",
+              description: "Access expert insights, trends, and best practices for Data Warehousing and ETL.",
+              buttonText: "Explore Resources",
             },
           ].map((item, index) => {
             const Icon = item.icon;
             return (
               <Card
                 key={index}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={3 + index}
               >
                 <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-white font-sans">
+                  <h3 className="font-semibold mb-2 text-black font-sans">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-white/80 font-sans">
+                  <p className="text-sm text-gray-600 font-sans">
                     {item.description}
                   </p>
                   <Button
-                    variant="outline"
+                    variant="glass"
                     size="lg"
-                    className="mt-4 border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
+                    className="mt-4 group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
                   >
                     {item.buttonText}
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardContent>
               </Card>
@@ -803,19 +789,41 @@ const ImpactSection = () => {
 };
 
 const ETLAndWarehouse = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute("data-index") || "0");
+            setVisibleItems((prev) => [...new Set([...prev, index])]);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const items = document.querySelectorAll(".animate-on-scroll");
+    items?.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <TechStackSection />
-        <ProcessSection />
-        <WhyChooseSection />
-        <ImpactSection />
-      </main>
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-white">
+        <Navigation />
+        <main>
+          <HeroSection />
+          <ServicesSection />
+          <TechStackSection />
+          <ProcessSection />
+          <WhyChooseSection />
+          <ImpactSection />
+        </main>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 };
 
