@@ -123,9 +123,9 @@ const HeroSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
             asChild
           >
-            <a href="/data-solutions" aria-label="Explore data solutions">
+            <a href="/join-us" aria-label="Explore data solutions">
               <BarChart3 className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
-              Explore Data Solutions
+              Join us in Transforming Data
             </a>
           </Button>
         </div>
@@ -364,19 +364,6 @@ const TechStackSection = () => {
               </Card>
             );
           })}
-        </div>
-        <div className="text-center">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/tech-stack">
-              Explore Our Tech Stack
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
         </div>
       </div>
     </section>
@@ -658,7 +645,7 @@ const ProcessSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans"
             asChild
           >
-            <a href="/case-studies">
+            <a href="/resources/case-studies">
               View Our Case Studies
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>

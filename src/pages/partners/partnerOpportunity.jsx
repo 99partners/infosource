@@ -208,7 +208,7 @@ const PartnerOpportunity = () => {
                 size="xl"
                 className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
               >
-                <Link to="/contact">
+                <Link to="/join-us">
                   <span className="relative z-10 flex items-center gap-3">
                     Start Partnership
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -221,7 +221,7 @@ const PartnerOpportunity = () => {
                 size="xl"
                 className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
               >
-                <Link to="/about">Explore More</Link>
+                <Link to="/contact">Explore More</Link>
               </Button>
             </div>
           </div>

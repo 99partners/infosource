@@ -78,13 +78,17 @@ const Contact = () => {
             </p>
             <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
               <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+                <a href="/join-us">
                 <span className="relative z-10 flex items-center gap-3">
-                  Start Partnership
+                  Connect with us
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
+                </a>
               </Button>
               <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
+              <a href="/services">
                 Explore Our Services
+              </a>
               </Button>
             </div>
           </div>

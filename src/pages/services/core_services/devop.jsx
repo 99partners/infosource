@@ -129,9 +129,9 @@ const HeroSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
             asChild
           >
-            <a href="/devops-solutions" aria-label="Explore DevOps solutions">
+            <a href="/join-us" aria-label="Explore DevOps solutions">
               <Settings className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
-              Explore DevOps Solutions
+              Join us to explore DevOps
             </a>
           </Button>
         </div>
@@ -336,19 +336,6 @@ const ServicesSection = () => {
             );
           })}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/contact" aria-label="Consult our DevOps experts">
-              Consult Our Experts
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -482,19 +469,6 @@ const TechStackSection = () => {
             );
           })}
         </div>
-        <div className="text-center">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/tech-stack" aria-label="Explore our DevOps tech stack">
-              Explore Our Tech Stack
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -616,7 +590,7 @@ const ProcessSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans"
             asChild
           >
-            <a href="/case-studies" aria-label="View DevOps case studies">
+            <a href="/resources/case-studies" aria-label="View DevOps case studies">
               View Our Case Studies
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -667,7 +641,6 @@ const WhyChooseSection = () => {
     { value: "500+", label: "Happy Clients", icon: Users },
     { value: "200+", label: "DevOps Specialists", icon: Star },
     { value: "1000+", label: "Completed Projects", icon: CheckCircle },
-    { value: "95%", label: "Client Retention Rate", icon: TrendingUp },
   ];
 
   return (

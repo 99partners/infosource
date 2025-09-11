@@ -124,7 +124,7 @@ const Navigation = () => {
                 <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 group-hover:w-full transition-all duration-300" />
               </div>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 fixed left-1/2 -translate-x-1/2 top-16 mt-3 z-50">
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 fixed left-1/2 -translate-x-1/2 top-12 mt-3 z-50">
                 <div className="bg-white p-6 rounded-2xl shadow-xl w-[920px] border border-gray-200">
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {servicesMenu.map((group) => (

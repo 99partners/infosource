@@ -129,9 +129,9 @@ const HeroSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
             asChild
           >
-            <a href="/software-solutions" aria-label="Explore software solutions">
+            <a href="/join-us" aria-label="Explore software solutions">
               <Code className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
-              Explore Software Solutions
+              Join us to explore software
             </a>
           </Button>
         </div>
@@ -348,19 +348,6 @@ const ServicesSection = () => {
             );
           })}
         </div>
-        <div className="text-center mt-12">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/contact" aria-label="Talk to our experts">
-              Talk to Our Experts
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -484,19 +471,6 @@ const TechStackSection = () => {
             );
           })}
         </div>
-        <div className="text-center">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/tech-stack" aria-label="Explore our tech stack">
-              Explore Our Tech Stack
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -618,7 +592,7 @@ const ProcessSection = () => {
             className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans"
             asChild
           >
-            <a href="/case-studies" aria-label="View software case studies">
+            <a href="/resources/case-studies" aria-label="View software case studies">
               View Our Case Studies
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -735,19 +709,6 @@ const UseCasesSection = () => {
               </Card>
             );
           })}
-        </div>
-        <div className="text-center">
-          <Button
-            variant="hero"
-            size="lg"
-            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-            asChild
-          >
-            <a href="/use-cases" aria-label="Explore use cases">
-              Explore More Use Cases
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
         </div>
       </div>
     </section>

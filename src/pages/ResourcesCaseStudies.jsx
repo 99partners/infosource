@@ -92,7 +92,7 @@ const ResourcesCaseStudies = () => {
                 size="xl"
                 className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
               >
-                <Link to="/portfolio">View Our Full Portfolio</Link>
+                <Link to="/blogs">View Our Blogs</Link>
               </Button>
             </div>
           </div>
@@ -227,34 +227,6 @@ const ResourcesCaseStudies = () => {
                 </Card>
               ))}
             </div>
-            <div
-              className={`text-center transition-all duration-1000 ${
-                visibleItems.includes(13) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              } animate-on-scroll`}
-              data-index={13}
-            >
-              <h3
-                className="text-xl font-bold mb-6 text-black font-sans"
-              >
-                Ready to Create Your <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Success Story?</span>
-              </h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8 font-sans">
-                Partner with Infosource to transform your business with cutting-edge AI solutions.
-              </p>
-              <Button
-                asChild
-                variant="hero"
-                size="xl"
-                className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
-              >
-                <Link to="/contact">
-                  <span className="relative z-10 flex items-center gap-3">
-                    Get in Touch Today
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -311,7 +283,7 @@ const ResourcesCaseStudies = () => {
                 size="xl"
                 className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
               >
-                <Link to="/team">Meet Our Team</Link>
+                <Link to="/resources/about-us">About us</Link>
               </Button>
             </div>
           </div>
