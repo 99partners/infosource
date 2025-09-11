@@ -52,23 +52,25 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400">
-      <div className="absolute inset-0 bg-white/70"></div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    <section className="relative min-h-[calc(100vh-16rem)] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/10"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
         <div
           className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
-          <Smartphone className="w-5 h-5 text-blue-500" />
+          <Smartphone className="w-4 h-4 text-blue-500" />
           <span className="text-sm font-medium text-blue-500 font-sans">
             Mobile App Development Services
           </span>
         </div>
         <h1
-          className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 delay-200 ${
+          className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } text-black font-sans`}
+          } text-black font-sans animate-on-scroll`}
+          data-index={0}
         >
           Innovative{" "}
           <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -77,16 +79,18 @@ const HeroSection = () => {
           </span>
         </h1>
         <p
-          className={`text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
+          className={`text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } font-sans`}
+          } font-sans animate-on-scroll`}
+          data-index={0}
         >
           Craft scalable, native, and cross-platform mobile applications with exceptional user experiences tailored to your business needs.
         </p>
         <div
           className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={0}
         >
           <Button
             asChild
@@ -105,7 +109,7 @@ const HeroSection = () => {
           <Button
             variant="glass"
             size="xl"
-            className="group bg-black/10 text-blue-500 hover:text-blue-600 font-sans"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
           >
             <Smartphone className="w-5 h-5 group-hover:text-blue-600 transition-colors" />
             Discover Mobile App Solutions
@@ -134,13 +138,14 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Zap className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -148,9 +153,10 @@ const ServicesSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Tailored{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -158,9 +164,10 @@ const ServicesSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Infosource delivers top-tier mobile app development services, empowering businesses to seize new opportunities with high-quality, secure, and innovative solutions.
           </p>
@@ -168,7 +175,8 @@ const ServicesSection = () => {
         <div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          } animate-on-scroll`}
+          data-index={3}
         >
           {[
             {
@@ -212,7 +220,10 @@ const ServicesSection = () => {
             return (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border bg-black/5"
+                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-500 hover:scale-105 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
+                data-index={4 + index}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
@@ -256,23 +267,24 @@ const TechStackSection = () => {
 
   const technologies = [
     { icon: Settings, title: "Java", color: "from-blue-500 to-blue-700" },
-    { icon: Settings, title: "C++", color: "from-green-500 to-green-700" },
-    { icon: Settings, title: ".NET", color: "from-purple-500 to-purple-700" },
-    { icon: Settings, title: "ReactJS", color: "from-red-500 to-red-700" },
-    { icon: Settings, title: "Swift", color: "from-indigo-500 to-indigo-700" },
+    { icon: Settings, title: "C++", color: "from-blue-500 to-blue-700" },
+    { icon: Settings, title: ".NET", color: "from-blue-500 to-blue-700" },
+    { icon: Settings, title: "ReactJS", color: "from-blue-500 to-blue-700" },
+    { icon: Settings, title: "Swift", color: "from-blue-500 to-blue-700" },
     { icon: Settings, title: "Kotlin", color: "from-blue-500 to-blue-700" },
-    { icon: Settings, title: "Flutter", color: "from-green-500 to-green-700" },
-    { icon: Settings, title: "React Native", color: "from-purple-500 to-purple-700" },
+    { icon: Settings, title: "Flutter", color: "from-blue-500 to-blue-700" },
+    { icon: Settings, title: "React Native", color: "from-blue-500 to-blue-700" },
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Settings className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
@@ -280,9 +292,10 @@ const TechStackSection = () => {
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Empowering{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -290,9 +303,10 @@ const TechStackSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Our advanced tools and frameworks power innovative mobile app solutions.
           </p>
@@ -306,17 +320,17 @@ const TechStackSection = () => {
                 key={index}
                 data-index={index}
                 className={`tech-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${
-                  isItemVisible ? "animate-fade-in-up" : ""
-                } bg-white`}
+                  isItemVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll bg-black/5`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-8 text-center">
                   <div
-                    className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                    className={`w-12 h-12 mx-auto mb-6 rounded-xl bg-gradient-to-br ${tech.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
+                  <h3 className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">
                     {tech.title}
                   </h3>
                 </CardContent>
@@ -328,10 +342,10 @@ const TechStackSection = () => {
           <Button
             variant="hero"
             size="lg"
-            className="bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
+            className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
           >
             Explore Our Tech Stack
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -390,23 +404,25 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
-            <TrendingUp className="w-4 h-4 text-blue-500" />
+            <Settings className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
               Our Process
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Effective{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -415,9 +431,10 @@ const ProcessSection = () => {
             Process
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Our proven process ensures rapid, high-quality app launches aligned with your goals.
           </p>
@@ -429,22 +446,22 @@ const ProcessSection = () => {
               <Card
                 key={index}
                 className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {process.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {process.description}
                   </CardDescription>
                 </CardContent>
@@ -452,7 +469,7 @@ const ProcessSection = () => {
             );
           })}
         </div>
-        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-white">
+        <div className="text-center bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">
             Review our notable mobile app development case studies
@@ -461,11 +478,11 @@ const ProcessSection = () => {
             Observe how we drive business success across industries.
           </p>
           <Button
-            variant="outline"
-            className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
+            variant="glass"
+            className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans"
           >
-            View Our Case Studies
-            <ArrowRight className="w-5 h-5 ml-2" />
+            Explore Our Portfolio
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -522,23 +539,25 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div
-            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${
+            className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={1}
           >
             <Star className="w-4 h-4 text-blue-500" />
             <span className="text-sm font-medium text-blue-500 font-sans">
-              Why Infosource
+              Why Choose Infosource
             </span>
           </div>
           <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 text-black font-sans transition-all duration-1000 delay-200 ${
+            className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Why Choose{" "}
             <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
@@ -546,9 +565,10 @@ const WhyChooseSection = () => {
             </span>
           </h2>
           <p
-            className={`text-xl text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            } animate-on-scroll`}
+            data-index={2}
           >
             Trust us to deliver exceptional mobile app development solutions with over 14 years of experience.
           </p>
@@ -559,23 +579,23 @@ const WhyChooseSection = () => {
             return (
               <Card
                 key={index}
-                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-white ${
-                  isVisible ? "animate-fade-in-up" : ""
-                }`}
+                className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                } animate-on-scroll`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black font-sans">
+                    <CardTitle className="text-lg font-bold text-black font-sans">
                       {feature.title}
                     </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 leading-relaxed font-sans">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -583,17 +603,17 @@ const WhyChooseSection = () => {
             );
           })}
         </div>
-        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-400 rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-8 font-sans">
             Our Track Record
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
                 <div key={index} className="text-center">
                   <div className="flex justify-center mb-3">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
@@ -611,11 +631,11 @@ const WhyChooseSection = () => {
             asChild
             variant="hero"
             size="lg"
-            className="mt-8 bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
+            className="mt-8 group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
           >
             <Link to="/connect-us">
               Start Your Project
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
         </div>
@@ -624,117 +644,27 @@ const WhyChooseSection = () => {
   );
 };
 
-const ImpactSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+const MobileAppDevelopment = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute("data-index") || "0");
+            setVisibleItems((prev) => [...prev, index]);
+          }
         });
       },
       { threshold: 0.2 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    const items = document.querySelectorAll(".animate-on-scroll");
+    items?.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <section
-      ref={sectionRef}
-      className="py-24 bg-gradient-to-r from-blue-800 to-blue-400 relative overflow-hidden"
-    >
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white font-sans">
-              Our Impact
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white font-sans">
-            Transforming <span className="text-blue-200">Businesses</span> with Mobile Apps
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Discover how Infosource’s mobile app solutions drive business success across industries.
-          </p>
-        </div>
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {[
-            {
-              icon: Star,
-              title: "Case Studies",
-              description: "Review our notable mobile app development case studies and observe how we drive business success.",
-              buttonText: "View Our Case Studies",
-            },
-            {
-              icon: TrendingUp,
-              title: "Industries",
-              description: "Mobile app achievements across sectors, transforming businesses with innovative solutions.",
-              buttonText: "Arrange a Complimentary Consultation",
-            },
-            {
-              icon: Users,
-              title: "Testimonials",
-              description: "Our clients express how Infosource’s mobile app solutions have transformed their businesses.",
-              buttonText: "Read Client Testimonials",
-            },
-            {
-              icon: CheckCircle,
-              title: "Resources",
-              description: "Explore blogs, trends, and advice to master mobile app development.",
-              buttonText: "Access Mobile App Blogs",
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={index}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:scale-105 transition-all duration-300"
-              >
-                <CardContent>
-                  <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2 text-white font-sans">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-white/80 font-sans">
-                    {item.description}
-                  </p>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="mt-4 border-white text-blue-600 hover:bg-white hover:text-blue-600 font-sans"
-                  >
-                    <Link to={item.title === "Industries" ? "/connect-us" : "#"}>
-                      {item.buttonText}
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const MobileAppDevelopment = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -744,7 +674,6 @@ const MobileAppDevelopment = () => {
         <TechStackSection />
         <ProcessSection />
         <WhyChooseSection />
-        <ImpactSection />
       </main>
       <Footer />
     </div>
