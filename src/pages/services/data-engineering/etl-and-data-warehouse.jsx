@@ -680,114 +680,6 @@ const WhyChooseSection = () => {
   );
 };
 
-const ImpactSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section ref={sectionRef} className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } animate-on-scroll`}
-          data-index={1}
-        >
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
-            <Heart className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500 font-sans">
-              Our Impact
-            </span>
-          </div>
-          <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-            Transforming <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Businesses</span> with Data
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Discover how Infosource’s Data Warehousing and ETL solutions drive business success across industries.
-          </p>
-        </div>
-        <div
-          className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          } animate-on-scroll`}
-          data-index={2}
-        >
-          {[
-            {
-              icon: Star,
-              title: "Case Studies",
-              description: "Explore our case studies to see how Infosource’s Data Warehousing solutions deliver tangible results.",
-              buttonText: "View Case Studies",
-            },
-            {
-              icon: TrendingUp,
-              title: "Industries",
-              description: "Data-driven transformation across sectors with Infosource’s tailored Data Warehousing solutions.",
-              buttonText: "Schedule a Free Data Consultation",
-            },
-            {
-              icon: Users,
-              title: "Testimonials",
-              description: "Hear from our clients about how Infosource’s solutions have empowered their businesses.",
-              buttonText: "Discover Client Success",
-            },
-            {
-              icon: CheckCircle,
-              title: "Resources",
-              description: "Access expert insights, trends, and best practices for Data Warehousing and ETL.",
-              buttonText: "Explore Resources",
-            },
-          ].map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={index}
-                className={`bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                } animate-on-scroll`}
-                data-index={3 + index}
-              >
-                <CardContent>
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2 text-black font-sans">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 font-sans">
-                    {item.description}
-                  </p>
-                  <Button
-                    variant="glass"
-                    size="lg"
-                    className="mt-4 group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
-                  >
-                    {item.buttonText}
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const ETLAndWarehouse = () => {
   const [visibleItems, setVisibleItems] = useState([]);
 
@@ -819,7 +711,6 @@ const ETLAndWarehouse = () => {
           <TechStackSection />
           <ProcessSection />
           <WhyChooseSection />
-          <ImpactSection />
         </main>
         <Footer />
       </div>

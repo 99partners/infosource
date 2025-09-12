@@ -52,9 +52,9 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-muted-foreground text-sm">© 2025 Infosource. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Privacy Policy</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Terms of Service</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Cookie Policy</a>
+            <a href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Privacy Policy</a>
+            <a href="/terms-and-conditions" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Terms of Service</a>
+            <a href="/cookie-policy" className="text-muted-foreground hover:text-primary transition-colors duration-300 ease-in-out">Cookie Policy</a>
           </div>
         </div>
       </div>

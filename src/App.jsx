@@ -65,6 +65,10 @@ import RealEstate from "./pages/industry/real-estate";
 import MediaEntertainment from "./pages/industry/media-entertainment";
 import saasProduct from "./pages/industry/saas-product";
 
+import PrivacyPolicy from "./pages/privacypolicy";
+import TermsAndConditions from "./pages/termscondition";
+import CookiePolicy from "./pages/cookiepolicy";
+
 
 const queryClient = new QueryClient();
 
@@ -140,8 +144,11 @@ const App = () => (
           <Route path="/industry/energy-utility" element={<EnergyUtility />} />
           <Route path="/industry/real-estate" element={<RealEstate />} />
           <Route path="/industry/media-entertainment" element={<MediaEntertainment />} />
-          <Route path="/industry/saas-product" element={<SaaSProduct />} /> 
+          <Route path="/industry/saas-product" element={<SaaSProduct />} />
 
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
 
 
           <Route path="*" element={<NotFound />} />
