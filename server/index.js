@@ -36,17 +36,13 @@ app.get('/api/health', (_req, res) => {
 const contactRoutes = require('./routes/contactRoutes');
 app.use('/api/contact', contactRoutes);
 
-// Start server after DB connection
+// Start server regardless of DB status (DB connection is attempted but non-blocking)
 const port = process.env.PORT || 5000;
 connectToDatabase()
-  .then(() => {
+  .finally(() => {
     app.listen(port, () => {
       console.log(`Server listening on http://localhost:${port}`);
     });
-  })
-  .catch((error) => {
-    console.error('Failed to start server:', error);
-    process.exit(1);
   });
 
 

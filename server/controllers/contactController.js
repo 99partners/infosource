@@ -21,8 +21,13 @@ exports.submitContact = async (req, res) => {
       });
     }
 
+    // If database is not connected, gracefully accept the submission without persisting
+    if (!require('mongoose').connection.readyState) {
+      return res.status(202).json({ ok: true, stored: false, message: 'Received. DB not connected.' });
+    }
+
     const created = await Contact.create({ name, email, company, service, message });
-    return res.status(201).json({ ok: true, id: created._id });
+    return res.status(201).json({ ok: true, id: created._id, stored: true });
   } catch (error) {
     console.error('Contact submit error', error);
     // Database connectivity / timeout
