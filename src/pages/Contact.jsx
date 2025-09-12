@@ -15,12 +15,11 @@ const contactInfo = [
 ];
 
 const services = [
-  "AI & Machine Learning",
+  "Aritficial Intelligence",
   "Data Engineering",
-  "Custom Software Development",
-  "Cloud Migration",
-  "Digital Transformation",
-  "Technical Consulting"
+  "Geneartive AI",
+  "DevOps",
+  "Development Services",
 ];
 
 const Contact = () => {
