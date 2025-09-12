@@ -72,91 +72,89 @@ const HeroSection = () => {
         </p>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <a href="/join-us">
             <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" />Get a Quote Now
+              <MessageCircle className="w-5 h-5" />Join Our Team
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
+            </a>
           </Button>
+          <a href="/services">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Explore Our Media Solutions
+            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Explore Our Services
           </Button>
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-const MediaSolutionsSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
+// const MediaSolutionsSection = () => {
+//   const [visibleItems, setVisibleItems] = useState([]);
+//   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { 
-        if (entry.isIntersecting) { 
-          const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
-          setVisibleItems((prev) => [...prev, index]); 
-        } 
-      });
-    }, { threshold: 0.2 });
-    const items = sectionRef.current?.querySelectorAll('.solution-card');
-    items?.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
+//   useEffect(() => {
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => { 
+//         if (entry.isIntersecting) { 
+//           const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
+//           setVisibleItems((prev) => [...prev, index]); 
+//         } 
+//       });
+//     }, { threshold: 0.2 });
+//     const items = sectionRef.current?.querySelectorAll('.solution-card');
+//     items?.forEach((item) => observer.observe(item));
+//     return () => observer.disconnect();
+//   }, []);
 
-  const solutions = [
-    { icon: Video, title: "OTT Streaming App Development", description: "Create scalable, high-performance OTT platforms that support premium video delivery, smart device integrations, seamless playback, and zero-latency streaming. Our team also revamps existing apps with better UX and faster load times." },
-    { icon: Users, title: "Social Media App Development", description: "Launch feature-rich social media apps that connect people, spark engagement, and boost brand presence. Integrated marketing tools, real-time feeds, and content moderation ensure user retention and platform growth." },
-    { icon: Gamepad, title: "Sports App Development", description: "We develop robust apps for sports teams, athletes, and leagues—featuring live scores, team updates, ticketing, and fan engagement modules. Whether you're managing a team or launching a fan-based app, we've got you covered." },
-    { icon: Camera, title: "Photo Editing & Sharing Apps", description: "Create intuitive photo editing apps with filters, effects, cropping, resolution controls, publishing tools, scheduling, and in-app payment capabilities—all wrapped in a slick UI." },
-    { icon: Newspaper, title: "News Streaming App Development", description: "Deliver personalized news experiences with real-time notifications, multilingual support, offline reading, and live news feeds. Our apps are optimized for content distribution and audience retention." },
-    { icon: Play, title: "On-Demand Entertainment App Solutions", description: "Connect users to services in real time with responsive on-demand apps. Features include intuitive navigation, instant booking, real-time tracking, one-click cancellations, and secure payments." }
-  ];
+//   const solutions = [
+//     { icon: Video, title: "OTT Streaming App Development", description: "Create scalable, high-performance OTT platforms that support premium video delivery, smart device integrations, seamless playback, and zero-latency streaming. Our team also revamps existing apps with better UX and faster load times." },
+//     { icon: Users, title: "Social Media App Development", description: "Launch feature-rich social media apps that connect people, spark engagement, and boost brand presence. Integrated marketing tools, real-time feeds, and content moderation ensure user retention and platform growth." },
+//     { icon: Gamepad, title: "Sports App Development", description: "We develop robust apps for sports teams, athletes, and leagues—featuring live scores, team updates, ticketing, and fan engagement modules. Whether you're managing a team or launching a fan-based app, we've got you covered." },
+//     { icon: Camera, title: "Photo Editing & Sharing Apps", description: "Create intuitive photo editing apps with filters, effects, cropping, resolution controls, publishing tools, scheduling, and in-app payment capabilities—all wrapped in a slick UI." },
+//     { icon: Newspaper, title: "News Streaming App Development", description: "Deliver personalized news experiences with real-time notifications, multilingual support, offline reading, and live news feeds. Our apps are optimized for content distribution and audience retention." },
+//     { icon: Play, title: "On-Demand Entertainment App Solutions", description: "Connect users to services in real time with responsive on-demand apps. Features include intuitive navigation, instant booking, real-time tracking, one-click cancellations, and secure payments." }
+//   ];
 
-  return (
-    <section ref={sectionRef} className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-            <Cloud className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500 font-sans">Our Media Solutions</span>
-          </div>
-          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
-            Cutting-Edge Media & Entertainment <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">App Development</span>
-          </h2>
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
-            At Infosource, we craft custom entertainment software that engages users, enhances experiences, and keeps your brand ahead in the digital media landscape.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon;
-            const isVisible = visibleItems.includes(index + 3);
-            return (
-              <Card key={index} data-index={index + 3} className={`solution-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{solution.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{solution.description}</CardDescription>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-        <div className="text-center mt-12">
-          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            <a href="/connect-us">Hire Top Media & Entertainment App Developers Today!</a>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-};
+//   return (
+//     <section ref={sectionRef} className="py-0 bg-gray-50">
+//       <div className="max-w-7xl mx-auto px-2">
+//         <div className="text-center mb-12">
+//           <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
+//             <Cloud className="w-4 h-4 text-blue-500" />
+//             <span className="text-sm font-medium text-blue-500 font-sans">Our Media Solutions</span>
+//           </div>
+//           <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
+//             Cutting-Edge Media & Entertainment <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">App Development</span>
+//           </h2>
+//           <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
+//             At Infosource, we craft custom entertainment software that engages users, enhances experiences, and keeps your brand ahead in the digital media landscape.
+//           </p>
+//         </div>
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+//           {solutions.map((solution, index) => {
+//             const Icon = solution.icon;
+//             const isVisible = visibleItems.includes(index + 3);
+//             return (
+//               <Card key={index} data-index={index + 3} className={`solution-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
+//                 <CardHeader className="text-center">
+//                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+//                     <Icon className="w-8 h-8 text-white" />
+//                   </div>
+//                   <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{solution.title}</CardTitle>
+//                 </CardHeader>
+//                 <CardContent>
+//                   <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{solution.description}</CardDescription>
+//                 </CardContent>
+//               </Card>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 const PortfolioSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -173,7 +171,13 @@ const PortfolioSection = () => {
   const portfolio = [
     { icon: Video, title: "Live Sports Streaming Platform", description: "Stream, Record, and Engage in Real Time: A multifunctional app for amateur sports broadcasting and recruitment. Teams can live stream Baseball, Volleyball, and Softball games, as well as live score matches directly through the platform." },
     { icon: Users, title: "YouTuber Social Networking App", description: "Connect Creators and Fans Seamlessly: A niche social platform built for YouTubers and their subscribers. It allows creators to engage with fans through video calls, content sharing, and community-building—turning casual viewers into loyal followers." },
-    { icon: Calendar, title: "Event & Care Tracking App", description: "Real-Time Group Location and Messaging App: This app enables users to create events, share live locations, and track participants on a map. Perfect for families and friends attending events or meetups, with group chat and notification support." }
+    { icon: Calendar, title: "Event & Care Tracking App", description: "Real-Time Group Location and Messaging App: This app enables users to create events, share live locations, and track participants on a map. Perfect for families and friends attending events or meetups, with group chat and notification support." },
+        { icon: Video, title: "OTT Streaming App Development", description: "Create scalable, high-performance OTT platforms that support premium video delivery, smart device integrations, seamless playback, and zero-latency streaming. Our team also revamps existing apps with better UX and faster load times." },
+    { icon: Users, title: "Social Media App Development", description: "Launch feature-rich social media apps that connect people, spark engagement, and boost brand presence. Integrated marketing tools, real-time feeds, and content moderation ensure user retention and platform growth." },
+    { icon: Gamepad, title: "Sports App Development", description: "We develop robust apps for sports teams, athletes, and leagues—featuring live scores, team updates, ticketing, and fan engagement modules. Whether you're managing a team or launching a fan-based app, we've got you covered." },
+    { icon: Camera, title: "Photo Editing & Sharing Apps", description: "Create intuitive photo editing apps with filters, effects, cropping, resolution controls, publishing tools, scheduling, and in-app payment capabilities—all wrapped in a slick UI." },
+    { icon: Newspaper, title: "News Streaming App Development", description: "Deliver personalized news experiences with real-time notifications, multilingual support, offline reading, and live news feeds. Our apps are optimized for content distribution and audience retention." },
+    { icon: Play, title: "On-Demand Entertainment App Solutions", description: "Connect users to services in real time with responsive on-demand apps. Features include intuitive navigation, instant booking, real-time tracking, one-click cancellations, and secure payments." }
   ];
 
   return (
@@ -340,76 +344,6 @@ const WhyChooseSection = () => {
   );
 };
 
-const IndustriesSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { 
-        if (entry.isIntersecting) { 
-          const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
-          setVisibleItems((prev) => [...prev, index]); 
-        } 
-      });
-    }, { threshold: 0.2 });
-    const items = sectionRef.current?.querySelectorAll('.industry-card');
-    items?.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
-  const industries = [
-    { icon: ShoppingCart, title: "Ecommerce", description: "Scalable platforms for seamless online retail." },
-    { icon: DollarSign, title: "BFSI", description: "Secure, innovative financial tech solutions." },
-    { icon: Gamepad, title: "Sports & Gaming", description: "Engaging apps for leagues, teams, and fantasy sports." },
-    { icon: Energy, title: "Energy & Utilities", description: "Smart software to manage resources and operations." },
-    { icon: Cloud, title: "SaaS Products", description: "Scalable cloud-based business tools." },
-    { icon: Home, title: "Real Estate", description: "Advanced property and lease management solutions." },
-    { icon: Wallet, title: "Fintech", description: "Future-ready platforms for digital finance." },
-    { icon: Stethoscope, title: "Healthcare", description: "Streamlined medical workflows with healthtech apps." },
-    { icon: BookOpen, title: "Education", description: "Interactive digital learning tools and EdTech solutions." },
-    { icon: Truck, title: "Logistics", description: "Next-gen apps for tracking, routing, and optimization." }
-  ];
-
-  return (
-    <section ref={sectionRef} className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-            <Target className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500 font-sans">Industries We Serve</span>
-          </div>
-          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
-            Accelerating Digital Transformation <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Across Industries</span>
-          </h2>
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
-            Our solutions are tailored to meet the unique needs of diverse industries, driving innovation and efficiency.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {industries.map((industry, index) => {
-            const Icon = industry.icon;
-            const isVisible = visibleItems.includes(index + 3);
-            return (
-              <Card key={index} data-index={index + 3} className={`industry-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{industry.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{industry.description}</CardDescription>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const CTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setIsVisible(true), 200); return () => clearTimeout(t); }, []);
@@ -432,13 +366,15 @@ const CTASection = () => {
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" /><a href="/connect-us">Get in Touch With Our Experts Today</a>
+              <MessageCircle className="w-5 h-5" /><a href="/join-us">Get in Touch With Our Experts Today</a>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
+          <a href="/contact">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Calendar className="w-5 h-5" />Schedule Consultation
           </Button>
+          </a>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
           <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -496,11 +432,10 @@ const MediaEntertainment = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <MediaSolutionsSection />
+        {/* <MediaSolutionsSection /> */}
         <PortfolioSection />
         <TechStackSection />
         <WhyChooseSection />
-        <IndustriesSection />
         <CTASection />
       </main>
       <Footer />

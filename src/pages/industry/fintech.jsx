@@ -67,14 +67,18 @@ const HeroSection = ({ visibleItems }) => {
         </p>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <a href="/contact">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Get In Touch
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
+            </a>
           </Button>
+          <a href="/services">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />See How AI is Transforming Fintech
+            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Explore Our Services
           </Button>
+          </a>
         </div>
       </div>
     </section>
@@ -396,12 +400,6 @@ const TechnologiesSection = ({ visibleItems, setVisibleItems }) => {
             );
           })}
         </div>
-        <div className="text-center">
-          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            Revolutionize Finance with Smart AI Systems
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -470,8 +468,10 @@ const ProcessSection = ({ visibleItems, setVisibleItems }) => {
           <p className="text-lg mb-6 font-sans">Our Impactful AI Projects in Action</p>
           <p className="text-blue-100 mb-8 font-sans">Explore our portfolio of customized AI solutions, crafted to meet specific client needs.</p>
           <Button variant="glass" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans">
+          <a href="/resources/case-studies" className="flex items-center">
             Read All Case Studies
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </a>
           </Button>
         </div>
       </div>
@@ -584,17 +584,7 @@ const CTASection = ({ visibleItems }) => {
             The fintech industry is evolving rapidly with AI innovations. Partner with Infosource to unlock powerful AI technologies that enhance financial services and drive business growth.
           </p>
         </div>
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${visibleItems.includes(71) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={71}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" />Contact Us Today
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Button>
-          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Calendar className="w-5 h-5" />Schedule Consultation
-          </Button>
-        </div>
+
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${visibleItems.includes(72) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={72}>
           <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
             <CardContent>

@@ -84,16 +84,18 @@ const SportsGaming = () => {
               data-index={0}
             >
               <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                <Link to="/connect-us">
+                <Link to="/join-us">
                   <span className="relative z-10 flex items-center gap-3">
                     <Users className="w-5 h-5" />Request a Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
               </Button>
+              <a href="/services">
               <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                Explore Sports Solutions
+                Explore All Services
               </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -290,16 +292,6 @@ const SportsGaming = () => {
                   </p>
                 </CardContent>
               </Card>
-              <div className="mt-8">
-                <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                  <Link to="/connect-us">
-                    <span className="relative z-10 flex items-center gap-3">
-                      <Users className="w-5 h-5" />Contact Us Today
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </Link>
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -371,24 +363,6 @@ const SportsGaming = () => {
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
                 Partner with Infosource to create innovative sports and gaming solutions that engage fans and empower athletes.
               </p>
-            </div>
-            <div
-              className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${
-                visibleItems.includes(29) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              } animate-on-scroll`}
-              data-index={29}
-            >
-              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                <Link to="/connect-us">
-                  <span className="relative z-10 flex items-center gap-3">
-                    <Users className="w-5 h-5" />Get in Touch
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                View Sports Portfolio
-              </Button>
             </div>
             <div
               className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${

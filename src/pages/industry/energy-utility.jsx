@@ -1,10 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navigation from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Users, ArrowRight, Heart, Zap, Target, CheckCircle, Clock, Star, Sun, Cloud } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Navigation from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import {
+  Users,
+  ArrowRight,
+  Heart,
+  Zap,
+  Target,
+  CheckCircle,
+  Clock,
+  Star,
+  Sun,
+  Cloud,
+} from "lucide-react";
 
 const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -12,14 +29,22 @@ const AnimatedCounter = ({ end, duration = 2, suffix = "" }) => {
     let startTime = null;
     const animate = (currentTime) => {
       if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      const progress = Math.min(
+        (currentTime - startTime) / (duration * 1000),
+        1
+      );
       setCount(Math.floor(progress * end));
       if (progress < 1) requestAnimationFrame(animate);
     };
     const timer = setTimeout(() => requestAnimationFrame(animate), 500);
     return () => clearTimeout(timer);
   }, [end, duration]);
-  return <span>{count}{suffix}</span>;
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
 };
 
 const EnergyUtility = () => {
@@ -30,7 +55,9 @@ const EnergyUtility = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            const index = parseInt(
+              entry.target.getAttribute("data-index") || "0"
+            );
             setVisibleItems((prev) => [...new Set([...prev, index])]);
           }
         });
@@ -38,7 +65,7 @@ const EnergyUtility = () => {
       { threshold: 0.2 }
     );
 
-    const items = document.querySelectorAll('.animate-on-scroll');
+    const items = document.querySelectorAll(".animate-on-scroll");
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);
@@ -53,47 +80,73 @@ const EnergyUtility = () => {
           <div className="relative z-10 max-w-7xl mx-auto px-6 text-center pt-24 pb-16 min-h-0">
             <div
               className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
-                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(0)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } animate-on-scroll`}
               data-index={0}
             >
               <Sun className="w-4 h-4 text-blue-500" />
-              <span className="text-sm font-medium text-blue-500 font-sans">Energy & Utility Solutions</span>
+              <span className="text-sm font-medium text-blue-500 font-sans">
+                Energy & Utility Solutions
+              </span>
             </div>
             <h1
               className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-1000 delay-200 ${
-                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(0)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } text-black font-sans animate-on-scroll`}
               data-index={0}
             >
-              Optimize <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Energy & Utilities</span>
+              Optimize{" "}
+              <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                Energy & Utilities
+              </span>
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-blue-500 rounded-full transform scale-x-0 animate-[scale-x_1s_ease-out_1s_forwards]"></div>
             </h1>
             <p
               className={`text-lg text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-400 ${
-                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(0)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } font-sans animate-on-scroll`}
               data-index={0}
             >
-              Build comprehensive, scalable software solutions for the energy and utility industry tailored to your operational and customer demands.
+              Build comprehensive, scalable software solutions for the energy
+              and utility industry tailored to your operational and customer
+              demands.
             </p>
             <div
               className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${
-                visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(0)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } animate-on-scroll`}
               data-index={0}
             >
-              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                <Link to="/connect-us">
+              <Button
+                variant="hero"
+                size="xl"
+                className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans"
+              >
+                <a href="/join-us">
                   <span className="relative z-10 flex items-center gap-3">
-                    <Users className="w-5 h-5" />Request a Quote
+                    <Users className="w-5 h-5" />
+                    Join Our Team
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </Link>
+                </a>
               </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                Explore Energy Solutions
-              </Button>
+              <a href="/services">
+                <Button
+                  variant="glass"
+                  size="xl"
+                  className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans"
+                >
+                  Explore All Services
+                </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -103,35 +156,76 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
-                visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(1)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               data-index={1}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
                 <Zap className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Our Solutions</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Our Solutions
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Custom <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Energy & Utility Software</span>
+                Custom{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Energy & Utility Software
+                </span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-sans">
-                At Infosource, our expert developers deliver robust and future-ready energy & utility software that ensures full-spectrum functionality and efficiency.
+                At Infosource, our expert developers deliver robust and
+                future-ready energy & utility software that ensures
+                full-spectrum functionality and efficiency.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { icon: Sun, title: "Energy Management Systems", description: "Optimize energy usage with real-time monitoring and predictive tools." },
-                  { icon: Cloud, title: "Smart City Solutions", description: "Integrated platforms for lighting, flood detection, and energy optimization." },
-                  { icon: CheckCircle, title: "Utility Asset Management", description: "Cloud-based tools for tracking, invoicing, and performance monitoring." },
-                  { icon: Target, title: "Smart Grid Metering", description: "Advanced metering with GPS and real-time data accuracy." },
-                  { icon: Zap, title: "EV Charging Station Apps", description: "User-friendly apps with navigation, payments, and usage reports." },
-                  { icon: Cloud, title: "Cloud Migration for Utilities", description: "Secure migration of contract and asset data to the cloud." },
+                  {
+                    icon: Sun,
+                    title: "Energy Management Systems",
+                    description:
+                      "Optimize energy usage with real-time monitoring and predictive tools.",
+                  },
+                  {
+                    icon: Cloud,
+                    title: "Smart City Solutions",
+                    description:
+                      "Integrated platforms for lighting, flood detection, and energy optimization.",
+                  },
+                  {
+                    icon: CheckCircle,
+                    title: "Utility Asset Management",
+                    description:
+                      "Cloud-based tools for tracking, invoicing, and performance monitoring.",
+                  },
+                  {
+                    icon: Target,
+                    title: "Smart Grid Metering",
+                    description:
+                      "Advanced metering with GPS and real-time data accuracy.",
+                  },
+                  {
+                    icon: Zap,
+                    title: "EV Charging Station Apps",
+                    description:
+                      "User-friendly apps with navigation, payments, and usage reports.",
+                  },
+                  {
+                    icon: Cloud,
+                    title: "Cloud Migration for Utilities",
+                    description:
+                      "Secure migration of contract and asset data to the cloud.",
+                  },
                 ].map((item, index) => {
                   const Icon = item.icon;
                   return (
                     <Card
                       key={index}
                       className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 rounded-xl ${
-                        visibleItems.includes(2 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        visibleItems.includes(2 + index)
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-8"
                       } animate-on-scroll`}
                       data-index={2 + index}
                       style={{ animationDelay: `${index * 0.2}s` }}
@@ -141,11 +235,15 @@ const EnergyUtility = () => {
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                             <Icon className="w-6 h-6 text-white" />
                           </div>
-                          <CardTitle className="text-lg font-bold text-black font-sans">{item.title}</CardTitle>
+                          <CardTitle className="text-lg font-bold text-black font-sans">
+                            {item.title}
+                          </CardTitle>
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{item.description}</CardDescription>
+                        <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
+                          {item.description}
+                        </CardDescription>
                       </CardContent>
                     </Card>
                   );
@@ -160,36 +258,61 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
-                visibleItems.includes(8) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(8)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               data-index={8}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
                 <Star className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Our Work</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Our Work
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Tailored <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Energy Solutions</span>
+                Tailored{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Energy Solutions
+                </span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                  { title: "Real-Time Energy Monitoring", description: "Platform with personalized insights and real-time monitoring for homes and businesses." },
-                  { title: "Smart City Waste Management", description: "Solution for Singapore’s clean initiatives with community rewards and real-time reporting." },
-                  { title: "Green Energy Efficiency Platform", description: "Smart platform connecting users to contractors for instant equipment servicing." },
+                  {
+                    title: "Real-Time Energy Monitoring",
+                    description:
+                      "Platform with personalized insights and real-time monitoring for homes and businesses.",
+                  },
+                  {
+                    title: "Smart City Waste Management",
+                    description:
+                      "Solution for Singapore’s clean initiatives with community rewards and real-time reporting.",
+                  },
+                  {
+                    title: "Green Energy Efficiency Platform",
+                    description:
+                      "Smart platform connecting users to contractors for instant equipment servicing.",
+                  },
                 ].map((project, index) => (
                   <Card
                     key={index}
                     className={`hover:shadow-lg transition-all duration-500 hover:scale-105 bg-black/5 rounded-xl ${
-                      visibleItems.includes(9 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      visibleItems.includes(9 + index)
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-8"
                     } animate-on-scroll`}
                     data-index={9 + index}
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardHeader>
-                      <CardTitle className="text-lg font-bold text-black font-sans">{project.title}</CardTitle>
+                      <CardTitle className="text-lg font-bold text-black font-sans">
+                        {project.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{project.description}</CardDescription>
+                      <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">
+                        {project.description}
+                      </CardDescription>
                     </CardContent>
                   </Card>
                 ))}
@@ -203,16 +326,23 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
-                visibleItems.includes(12) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(12)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               data-index={12}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
                 <Sun className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Technology Stack</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Technology Stack
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Technologies <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Powering Energy Solutions</span>
+                Technologies{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Powering Energy Solutions
+                </span>
               </h2>
               <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
@@ -228,12 +358,15 @@ const EnergyUtility = () => {
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                           <CheckCircle className="w-6 h-6 text-white" />
                         </div>
-                        <p className="text-lg text-gray-600 font-sans">{tech}</p>
+                        <p className="text-lg text-gray-600 font-sans">
+                          {tech}
+                        </p>
                       </div>
                     ))}
                   </div>
                   <p className="text-lg text-gray-600 leading-relaxed font-sans">
-                    We leverage cutting-edge technologies to build scalable, high-performance energy and utility software solutions.
+                    We leverage cutting-edge technologies to build scalable,
+                    high-performance energy and utility software solutions.
                   </p>
                 </CardContent>
               </Card>
@@ -246,38 +379,64 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
-                visibleItems.includes(17) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(17)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               data-index={17}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
                 <Target className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Why Infosource</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Why Infosource
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Why Choose <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource?</span>
+                Why Choose{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Infosource?
+                </span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {[
-                  { value: 15, suffix: "+", description: "Years of Experience" },
+                  {
+                    value: 15,
+                    suffix: "+",
+                    description: "Years of Experience",
+                  },
                   { value: 500, suffix: "+", description: "Skilled Engineers" },
-                  { value: 1500, suffix: "+", description: "Projects Delivered" },
+                  {
+                    value: 1500,
+                    suffix: "+",
+                    description: "Projects Delivered",
+                  },
                   { value: 3, suffix: "", description: "Development Centers" },
-                  { value: 1000, suffix: "+", description: "Satisfied Clients" },
+                  {
+                    value: 1000,
+                    suffix: "+",
+                    description: "Satisfied Clients",
+                  },
                 ].map((stat, index) => (
                   <Card
                     key={index}
                     className={`hover:shadow-lg transition-all duration-500 bg-black/5 rounded-xl ${
-                      visibleItems.includes(18 + index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      visibleItems.includes(18 + index)
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-8"
                     } animate-on-scroll`}
                     data-index={18 + index}
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <CardContent className="pt-6">
                       <div className="text-3xl font-bold text-black mb-2 font-sans">
-                        <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                        <AnimatedCounter
+                          end={stat.value}
+                          suffix={stat.suffix}
+                        />
                       </div>
-                      <p className="text-sm text-gray-600 font-sans">{stat.description}</p>
+                      <p className="text-sm text-gray-600 font-sans">
+                        {stat.description}
+                      </p>
                     </CardContent>
                   </Card>
                 ))}
@@ -285,20 +444,11 @@ const EnergyUtility = () => {
               <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
                   <p className="text-lg text-gray-600 leading-relaxed font-sans">
-                    Your trusted partner for utility and energy software development, delivering scalable and efficient solutions.
+                    Your trusted partner for utility and energy software
+                    development, delivering scalable and efficient solutions.
                   </p>
                 </CardContent>
               </Card>
-              <div className="mt-8">
-                <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                  <Link to="/connect-us">
-                    <span className="relative z-10 flex items-center gap-3">
-                      <Users className="w-5 h-5" />Discuss Your Project
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </Link>
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -307,16 +457,23 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`animate-on-scroll transition-all duration-1000 ${
-                visibleItems.includes(23) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(23)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               data-index={23}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
                 <Target className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Industries We Serve</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Industries We Serve
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Beyond <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Energy & Utilities</span>
+                Beyond{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Energy & Utilities
+                </span>
               </h2>
               <Card className="p-8 rounded-xl max-w-4xl mx-auto bg-black/5">
                 <CardContent>
@@ -337,12 +494,15 @@ const EnergyUtility = () => {
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                           <CheckCircle className="w-6 h-6 text-white" />
                         </div>
-                        <p className="text-lg text-gray-600 font-sans">{industry}</p>
+                        <p className="text-lg text-gray-600 font-sans">
+                          {industry}
+                        </p>
                       </div>
                     ))}
                   </div>
                   <p className="text-lg text-gray-600 leading-relaxed font-sans">
-                    Comprehensive software development across key sectors to drive innovation and efficiency.
+                    Comprehensive software development across key sectors to
+                    drive innovation and efficiency.
                   </p>
                 </CardContent>
               </Card>
@@ -355,42 +515,36 @@ const EnergyUtility = () => {
           <div className="max-w-7xl mx-auto px-6 text-center">
             <div
               className={`transition-all duration-1000 ${
-                visibleItems.includes(29) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(29)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } animate-on-scroll`}
               data-index={29}
             >
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8">
                 <Heart className="w-4 h-4 text-blue-500" />
-                <span className="text-sm font-medium text-blue-500 font-sans">Transform Energy & Utilities</span>
+                <span className="text-sm font-medium text-blue-500 font-sans">
+                  Transform Energy & Utilities
+                </span>
               </div>
               <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                Build Your <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Energy Solution</span> with Infosource
+                Build Your{" "}
+                <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">
+                  Energy Solution
+                </span>{" "}
+                with Infosource
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-                Partner with Infosource to create scalable, efficient energy and utility software that optimizes operations and meets customer demands.
+                Partner with Infosource to create scalable, efficient energy and
+                utility software that optimizes operations and meets customer
+                demands.
               </p>
             </div>
             <div
-              className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${
-                visibleItems.includes(29) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              } animate-on-scroll`}
-              data-index={29}
-            >
-              <Button asChild variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                <Link to="/connect-us">
-                  <span className="relative z-10 flex items-center gap-3">
-                    <Users className="w-5 h-5" />Get in Touch
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                View Energy Portfolio
-              </Button>
-            </div>
-            <div
               className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${
-                visibleItems.includes(29) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                visibleItems.includes(29)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               } animate-on-scroll`}
               data-index={29}
             >
@@ -399,8 +553,12 @@ const EnergyUtility = () => {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
                     <Users className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-black font-sans">Start a Conversation</h3>
-                  <p className="text-sm text-gray-600 font-sans">Discuss your energy project with our experts.</p>
+                  <h3 className="font-semibold mb-2 text-black font-sans">
+                    Start a Conversation
+                  </h3>
+                  <p className="text-sm text-gray-600 font-sans">
+                    Discuss your energy project with our experts.
+                  </p>
                 </CardContent>
               </Card>
               <Card className="bg-black/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -408,8 +566,12 @@ const EnergyUtility = () => {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-black font-sans">Free Consultation</h3>
-                  <p className="text-sm text-gray-600 font-sans">Explore opportunities for your utility solution.</p>
+                  <h3 className="font-semibold mb-2 text-black font-sans">
+                    Free Consultation
+                  </h3>
+                  <p className="text-sm text-gray-600 font-sans">
+                    Explore opportunities for your utility solution.
+                  </p>
                 </CardContent>
               </Card>
               <Card className="bg-black/5 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -417,8 +579,12 @@ const EnergyUtility = () => {
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-black font-sans">Fast Response</h3>
-                  <p className="text-sm text-gray-600 font-sans">We’ll get back to you within 24 hours.</p>
+                  <h3 className="font-semibold mb-2 text-black font-sans">
+                    Fast Response
+                  </h3>
+                  <p className="text-sm text-gray-600 font-sans">
+                    We’ll get back to you within 24 hours.
+                  </p>
                 </CardContent>
               </Card>
             </div>

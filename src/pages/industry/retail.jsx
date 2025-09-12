@@ -83,14 +83,18 @@ const Retail = () => {
               data-index={0}
             >
               <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+                <a href="/contact">
                 <span className="relative z-10 flex items-center gap-3">
                   <Users className="w-5 h-5" />Get in Touch
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
+                </a>
               </Button>
+              <a href="/services">
               <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                Explore AI Solutions
+                Explore All Services
               </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -468,22 +472,6 @@ const Retail = () => {
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
                 Connect with Infosource to explore how our AI solutions can transform your retail operations, drive growth, and deliver measurable results.
               </p>
-            </div>
-            <div
-              className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${
-                visibleItems.includes(49) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              } animate-on-scroll`}
-              data-index={49}
-            >
-              <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-                <span className="relative z-10 flex items-center gap-3">
-                  <Users className="w-5 h-5" />Get in Touch
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-              <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-                View AI Portfolio
-              </Button>
             </div>
             <div
               className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${

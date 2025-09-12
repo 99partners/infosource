@@ -70,14 +70,18 @@ const HeroSection = () => {
         </p>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <a href="/join-us">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Connect With Our Team
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
+            </a>
           </Button>
+          <a href="/services">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />See How AI is Transforming Logistics
+            <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Services Overview
           </Button>
+          </a>
         </div>
       </div>
     </section>
@@ -393,12 +397,6 @@ const TechnologiesSection = () => {
             );
           })}
         </div>
-        <div className="text-center">
-          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            Transform Logistics with AI
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
       </div>
     </section>
   );
@@ -509,17 +507,6 @@ const CTASection = () => {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
             Connect with our specialists to unlock powerful AI technologies that enhance logistics operations and drive efficiency.
           </p>
-        </div>
-        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
-          <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" />Connect With Our Team
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Button>
-          <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Calendar className="w-5 h-5" />Schedule Consultation
-          </Button>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`}>
           <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">

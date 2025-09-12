@@ -87,80 +87,6 @@ const HeroSection = () => {
   );
 };
 
-const SaaSSolutionsSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { 
-        if (entry.isIntersecting) { 
-          const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
-          setVisibleItems((prev) => [...prev, index]); 
-        } 
-      });
-    }, { threshold: 0.2 });
-    const items = sectionRef.current?.querySelectorAll('.solution-card');
-    items?.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
-  const solutions = [
-    { icon: Users, title: "CRM Solutions", description: "Create intuitive, scalable CRM systems that streamline customer interactions, automate service workflows, manage large datasets, and uncover sales opportunities. Our SaaS CRM solutions automate up to 90% of repetitive tasks for improved efficiency." },
-    { icon: Settings, title: "ERP Systems", description: "Develop dynamic, secure ERP platforms with modules for finance, HR, supply chain, project tracking, risk assessment, and more. Enhance coordination and operational control for startups and enterprises alike." },
-    { icon: FileText, title: "Project Management Tools", description: "Enable seamless collaboration, remote team management, and on-time project delivery with task tracking, real-time updates, budget monitoring, document sharing, and Gantt charts—all from one dashboard." },
-    { icon: Shield, title: "Blockchain-Powered SaaS Apps", description: "Elevate your product with blockchain integration for enhanced security, transparency, and traceability, ensuring immutable records, encrypted communications, and data integrity." },
-    { icon: DollarSign, title: "Accounting Software", description: "Access secure, cloud-based accounting software that automates invoicing, tracks transactions, maps accounts, and generates real-time financial reports—available from any device, anywhere." },
-    { icon: User, title: "HRM Software", description: "Simplify HR operations including employee onboarding, leave management, performance tracking, and payroll with custom HRM SaaS platforms that empower data-driven decision-making." },
-    { icon: Stethoscope, title: "Healthcare SaaS Platforms", description: "Deliver top-tier digital health services with comprehensive platforms supporting telemedicine, patient engagement, appointment scheduling, e-prescriptions, billing, and health monitoring—secure, compliant, and scalable." },
-    { icon: MessageCircle, title: "Communication Software", description: "Streamline business communication through multi-channel platforms supporting audio/video calls, chat, scheduling, and file sharing—ideal for remote teams, support desks, and internal collaboration." }
-  ];
-
-  return (
-    <section ref={sectionRef} className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-            <Cloud className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500 font-sans">Our SaaS Solutions</span>
-          </div>
-          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
-            Build Robust SaaS Applications with <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Infosource</span>
-          </h2>
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
-            We develop innovative, cloud-native SaaS products tailored to streamline operations, boost productivity, and accelerate growth across industries.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon;
-            const isVisible = visibleItems.includes(index + 3);
-            return (
-              <Card key={index} data-index={index + 3} className={`solution-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{solution.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{solution.description}</CardDescription>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-        <div className="text-center mt-12">
-          <Button variant="hero" size="lg" className="group bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
-            <a href="/connect-us">Hire Dedicated SaaS Developers</a>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const PortfolioSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -176,7 +102,15 @@ const PortfolioSection = () => {
   const portfolio = [
     { icon: Users, title: "Cloud CRM for Small Businesses", description: "Serwiz: A lightweight yet powerful CRM helping small businesses enhance customer service, streamline processes, and maximize resources. It’s designed to improve both backend efficiency and customer engagement." },
     { icon: FileText, title: "Project & Team Management Software", description: "A comprehensive solution for managing teams, tasks, and documents on a single platform. Features include time tracking, budgeting, task assignment, and centralized storage—boosting collaboration and reducing overheads." },
-    { icon: User, title: "HRM Software for Event Businesses", description: "A complete CRM and business management suite tailored for the events industry. This tool helps business owners manage customer relationships, schedules, staff, and finances with ease—saving time and enhancing organization." }
+    { icon: User, title: "HRM Software for Event Businesses", description: "A complete CRM and business management suite tailored for the events industry. This tool helps business owners manage customer relationships, schedules, staff, and finances with ease—saving time and enhancing organization." },
+    { icon: Users, title: "CRM Solutions", description: "Create intuitive, scalable CRM systems that streamline customer interactions, automate service workflows, manage large datasets, and uncover sales opportunities. Our SaaS CRM solutions automate up to 90% of repetitive tasks for improved efficiency." },
+    { icon: Settings, title: "ERP Systems", description: "Develop dynamic, secure ERP platforms with modules for finance, HR, supply chain, project tracking, risk assessment, and more. Enhance coordination and operational control for startups and enterprises alike." },
+    { icon: FileText, title: "Project Management Tools", description: "Enable seamless collaboration, remote team management, and on-time project delivery with task tracking, real-time updates, budget monitoring, document sharing, and Gantt charts—all from one dashboard." },
+    { icon: Shield, title: "Blockchain-Powered SaaS Apps", description: "Elevate your product with blockchain integration for enhanced security, transparency, and traceability, ensuring immutable records, encrypted communications, and data integrity." },
+    { icon: DollarSign, title: "Accounting Software", description: "Access secure, cloud-based accounting software that automates invoicing, tracks transactions, maps accounts, and generates real-time financial reports—available from any device, anywhere." },
+    { icon: User, title: "HRM Software", description: "Simplify HR operations including employee onboarding, leave management, performance tracking, and payroll with custom HRM SaaS platforms that empower data-driven decision-making." },
+    { icon: Stethoscope, title: "Healthcare SaaS Platforms", description: "Deliver top-tier digital health services with comprehensive platforms supporting telemedicine, patient engagement, appointment scheduling, e-prescriptions, billing, and health monitoring—secure, compliant, and scalable." },
+    { icon: MessageCircle, title: "Communication Software", description: "Streamline business communication through multi-channel platforms supporting audio/video calls, chat, scheduling, and file sharing—ideal for remote teams, support desks, and internal collaboration." }
   ];
 
   return (
@@ -343,76 +277,6 @@ const WhyChooseSection = () => {
   );
 };
 
-const IndustriesSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { 
-        if (entry.isIntersecting) { 
-          const index = parseInt(entry.target.getAttribute('data-index') || '0'); 
-          setVisibleItems((prev) => [...prev, index]); 
-        } 
-      });
-    }, { threshold: 0.2 });
-    const items = sectionRef.current?.querySelectorAll('.industry-card');
-    items?.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
-  const industries = [
-    { icon: ShoppingCart, title: "Ecommerce", description: "Build scalable digital storefronts and B2B/B2C platforms." },
-    { icon: DollarSign, title: "BFSI", description: "Secure SaaS solutions for banking, insurance, and finance." },
-    { icon: Gamepad, title: "Sports & Gaming", description: "Feature-rich digital experiences for fans and players." },
-    { icon: Home, title: "Real Estate", description: "Modern PropTech solutions for agents and developers." },
-    { icon: Energy, title: "Energy & Utilities", description: "SaaS tools for smart grid, billing, and asset management." },
-    { icon: Tv, title: "Media & Entertainment", description: "OTT, social media, and streaming platforms." },
-    { icon: Wallet, title: "Fintech", description: "Digital wallets, lending systems, and financial analytics." },
-    { icon: Stethoscope, title: "Healthcare", description: "HIPAA-compliant telemedicine and patient care platforms." },
-    { icon: BookOpen, title: "Education", description: "EdTech tools for e-learning, LMS, and student engagement." },
-    { icon: Truck, title: "Logistics", description: "Optimize routes, warehouses, and inventory with SaaS-based systems." }
-  ];
-
-  return (
-    <section ref={sectionRef} className="py-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${visibleItems.includes(0) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
-            <Target className="w-4 h-4 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500 font-sans">Industries We Serve</span>
-          </div>
-          <h2 className={`text-3xl font-bold mb-6 text-black font-sans transition-all duration-1000 ${visibleItems.includes(1) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
-            Custom SaaS Development for <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Every Industry</span>
-          </h2>
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto font-sans transition-all duration-1000 delay-400 ${visibleItems.includes(2) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
-            Our SaaS solutions are tailored to meet the unique needs of diverse industries, driving innovation and efficiency.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {industries.map((industry, index) => {
-            const Icon = industry.icon;
-            const isVisible = visibleItems.includes(index + 3);
-            return (
-              <Card key={index} data-index={index + 3} className={`industry-card group hover:shadow-lg transition-all duration-500 hover:scale-105 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll bg-black/5`} style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-lg font-bold text-black group-hover:text-blue-500 transition-colors font-sans">{industry.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-sm leading-relaxed font-sans">{industry.description}</CardDescription>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const CTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => { const t = setTimeout(() => setIsVisible(true), 200); return () => clearTimeout(t); }, []);
@@ -435,13 +299,15 @@ const CTASection = () => {
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={1}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
             <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" /><a href="/connect-us">Get in Touch With Our Experts Today</a>
+              <MessageCircle className="w-5 h-5" /><a href="/join-us">Get in Touch With Our Experts Today</a>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
+          <a href="/contact">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Calendar className="w-5 h-5" />Schedule Consultation
           </Button>
+          </a>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
           <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -499,11 +365,9 @@ const SaaSProduct = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <SaaSSolutionsSection />
         <PortfolioSection />
         <TechStackSection />
         <WhyChooseSection />
-        <IndustriesSection />
         <CTASection />
       </main>
       <Footer />
