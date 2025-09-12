@@ -87,14 +87,18 @@ const HeroSection = () => {
         </p>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={0}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <a href="/join-us">
             <span className="relative z-10 flex items-center gap-3">
               <MessageCircle className="w-5 h-5" />Set Up a Discussion with Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
+            </a>
           </Button>
+          <a href="/blogs">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
             <Play className="w-5 h-5 group-hover:text-blue-600 transition-colors" />Explore AI Software Solutions
           </Button>
+          </a>
         </div>
       </div>
     </section>
@@ -360,10 +364,12 @@ const ProcessSection = () => {
           <h3 className="text-2xl font-bold mb-4 font-sans">Case Studies</h3>
           <p className="text-lg mb-6 font-sans">A summary of our top AI-centered software development tools</p>
           <p className="text-blue-100 mb-8 font-sans">How our creative AI software tools reshaped client’s enterprise.</p>
-          <Button variant="glass" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-blue-600 font-sans">
+          <a href="/resources/case-studies">
+          <Button variant="glass" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-white hover:text-white-600 font-sans">
             Access All Case Studies
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
+          </a>
         </div>
       </div>
     </section>
@@ -476,14 +482,18 @@ const CTASection = () => {
         </div>
         <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={2}>
           <Button variant="hero" size="xl" className="group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+            <a href="/contact">
             <span className="relative z-10 flex items-center gap-3">
-              <MessageCircle className="w-5 h-5" />Connect with Our Specialists
+              <MessageCircle className="w-5 h-5" />Contact Us Today
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
+            </a>
           </Button>
+          <a href="/resources/about-us">
           <Button variant="glass" size="xl" className="group bg-black/10 bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent hover:text-blue-600 font-sans">
-            <Calendar className="w-5 h-5" />Talk About Your Initiative
+            <Calendar className="w-5 h-5" />Why Choose Infosource?
           </Button>
+          </a>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} animate-on-scroll`} data-index={3}>
           <Card className="bg-black/5 p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">
