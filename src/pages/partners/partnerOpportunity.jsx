@@ -338,10 +338,10 @@ const PartnerOpportunity = () => {
             >
               <CardContent>
                 <h2 className="text-3xl font-bold mb-6 text-black font-sans">
-                  Who Should Partner with{" "}
-                  <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent">Us?</span>
+                  Who Should Partner {" "}
+                  <span className="bg-gradient-to-r from-blue-800 to-blue-400 bg-clip-text text-transparent"> with Us?</span>
                 </h2>
-                <p className="text-gray-600 mb-8 font-sans">This partnership opportunity is ideal for:</p>
+                 <h3 className="text-xl font-semibold mt-8 mb-3 text-blue-500 font-sans">This partnership opportunity is ideal for:</h3>
                 <div className="space-y-6">
                   {whoShouldPartner.map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
