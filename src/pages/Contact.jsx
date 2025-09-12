@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 const contactInfo = [
   { icon: Mail, title: "Email Us", description: "Get in touch via email", details: "hello@infosource.com", action: "Send Email" },
@@ -25,6 +26,8 @@ const services = [
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', service: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
@@ -47,14 +50,37 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setErrorMessage('');
+    setIsSubmitting(true);
+    try {
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${baseUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to submit');
+      }
+      setIsSubmitted(true);
       setFormData({ name: '', email: '', company: '', service: '', message: '' });
-    }, 3000);
+      setTimeout(() => setIsSubmitted(false), 3000);
+      toast({
+        title: 'Message sent',
+        description: 'Your message has been delivered. We will respond within 24 hours.',
+      });
+    } catch (err) {
+      setErrorMessage(err?.message || 'Something went wrong');
+      toast({
+        title: 'Submission failed',
+        description: (err && err.message) ? err.message : 'Unable to send your message right now.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,6 +141,9 @@ const Contact = () => {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
+                      {errorMessage && (
+                        <div className="text-left text-sm text-red-600 font-sans">{errorMessage}</div>
+                      )}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium text-black mb-2 font-sans">Full Name *</label>
@@ -142,9 +171,9 @@ const Contact = () => {
                         <label htmlFor="message" className="block text-sm font-medium text-black mb-2 font-sans">Message *</label>
                         <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows={6} className="w-full font-sans" placeholder="Tell us about your project and how we can help..." />
                       </div>
-                      <Button type="submit" variant="hero" size="xl" className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 text-white font-sans">
+                      <Button type="submit" disabled={isSubmitting} variant="hero" size="xl" className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-800 to-blue-400 hover:bg-blue-700 disabled:opacity-70 text-white font-sans">
                         <span className="relative z-10 flex items-center gap-3">
-                          <Send className="w-5 h-5" /> Send Message
+                          <Send className="w-5 h-5" /> {isSubmitting ? 'Sending...' : 'Send Message'}
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </span>
                       </Button>
