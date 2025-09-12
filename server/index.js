@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
-const connectToDatabase = require('./lib/db');
+const connectToDatabase = require('./db');
 
 dotenv.config();
 
