@@ -13,7 +13,7 @@ This document explains how to set up and use environment variables for both the 
 
 | Variable | Description | Example |
 |----------|-------------|--------|
-| PORT | Server port number | 5000 |
+| PORT | Server port number | 7000 |
 | NODE_ENV | Environment name | development, production |
 | ALLOWED_ORIGINS | CORS allowed origins (comma-separated) | http://localhost:5731,http://localhost:5173 |
 | MONGO_URI | MongoDB connection string | mongodb+srv://... |
@@ -43,7 +43,7 @@ NODE_ENV=production node index.js
 
 | Variable | Description | Example |
 |----------|-------------|--------|
-| VITE_API_BASE_URL | Base URL for API requests | http://localhost:5000 |
+| VITE_API_BASE_URL | Base URL for API requests | http://localhost:7000 |
 | VITE_APP_TITLE | Application title | 99Infosource (Development) |
 | VITE_APP_ENV | Environment name | development, production |
 | VITE_FEATURE_DEBUG_TOOLS | Enable/disable debug tools | true, false |
