@@ -34,7 +34,12 @@ app.get('/api/health', (_req, res) => {
 
 // Routes
 const contactRoutes = require('./routes/contactRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const adminDashboardRoutes = require('./routes/adminDashboardRoutes');
+
 app.use('/api/contact', contactRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin/dashboard', adminDashboardRoutes);
 
 // Start server regardless of DB status (DB connection is attempted but non-blocking)
 const port = process.env.PORT || 5000;

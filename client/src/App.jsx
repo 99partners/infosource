@@ -4,6 +4,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AdminProvider } from "./contexts/AdminContext";
+import AdminLogin from "./pages/AdminLogin";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminRoute from "./components/admin/AdminRoute";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminContacts from "./pages/admin/AdminContacts";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ScrollToTop from "./components/ScrollToTop";
@@ -74,12 +80,13 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
+    <AdminProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
           {/* services overview */}
@@ -150,11 +157,26 @@ const App = () => (
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
 
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/*" element={
+            <AdminRoute>
+              <AdminLayout>
+                <Routes>
+                  <Route path="/dashboard" element={<AdminDashboard />} />
+                  <Route path="/contacts" element={<AdminContacts />} />
+                  <Route path="/users" element={<div>Users Management - Coming Soon</div>} />
+                  <Route path="/settings" element={<div>Settings - Coming Soon</div>} />
+                </Routes>
+              </AdminLayout>
+            </AdminRoute>
+          } />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
+    </AdminProvider>
   </QueryClientProvider>
 );
 
