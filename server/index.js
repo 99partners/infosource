@@ -3,8 +3,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 const connectToDatabase = require('./db');
+const path = require('path');
 
-dotenv.config();
+// Load environment variables based on NODE_ENV
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+console.log(`Loading environment from ${envFile}`);
+dotenv.config({ path: path.resolve(__dirname, envFile) });
 
 const app = express();
 

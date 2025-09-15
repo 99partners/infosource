@@ -1,4 +1,6 @@
-const API_BASE = '/api/admin';
+// Use environment variable for API base URL with fallback
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+const API_BASE = `${API_URL}/api/admin`;
 
 // Helper function to get auth headers
 const getAuthHeaders = () => {
